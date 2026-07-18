@@ -3,919 +3,1387 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anwar Ul Haq | Senior Dynamics 365 &amp; Power Platform Consultant</title>
+  <title>Anwar Ul Haq — Senior D365 CRM &amp; Power Platform Consultant</title>
   <meta name="description" content="Senior Dynamics 365 CRM &amp; Power Platform Consultant — 6+ years, 10 Microsoft certifications, PL-600 Solution Architect. Based in Doha, Qatar.">
   <meta property="og:title" content="Anwar Ul Haq — Dynamics 365 &amp; Power Platform Consultant">
-  <meta property="og:description" content="Senior Dynamics 365 CRM &amp; Power Platform Consultant — 10× Microsoft Certified, PL-600 Solution Architect, Doha Qatar.">
   <meta property="og:url" content="https://anwarluck.github.io/">
   <link rel="shortcut icon" href="assets/images/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* ── Variables ──────────────────────────────── */
+    /* ─── Variables ─────────────────────────────────── */
     :root {
-      --pp-purple:     #742774;
-      --pp-blue:       #0078d4;
-      --pp-cyan:       #00bcf2;
-      --pp-teal:       #00b294;
-      --pp-green:      #498205;
-      --pp-orange:     #c8601a;
-      --d365-bg:       #f3f2f1;
-      --sidebar-bg:    #1b1a19;
-      --sidebar-w:     252px;
-      --white:         #ffffff;
-      --text-1:        #201f1e;
-      --text-2:        #605e5c;
-      --border:        #edebe9;
-      --shadow-sm:     0 1.6px 3.6px rgba(0,0,0,.13), 0 .3px .9px rgba(0,0,0,.11);
-      --shadow-md:     0 6.4px 14.4px rgba(0,0,0,.13), 0 1.2px 3.6px rgba(0,0,0,.11);
+      --space:   #050710;
+      --space2:  #080b1a;
+      --cyan:    #00d4ff;
+      --purple:  #9d00ff;
+      --green:   #00ff8c;
+      --amber:   #ffb400;
+      --white:   #e8f0ff;
+      --muted:   rgba(180,210,240,0.55);
+      --glass:   rgba(255,255,255,0.03);
+      --glass2:  rgba(255,255,255,0.06);
+      --border:  rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.12);
+      --glow-c:  rgba(0,212,255,0.15);
+      --glow-p:  rgba(157,0,255,0.15);
+      --font:    'Plus Jakarta Sans', sans-serif;
+      --mono:    'JetBrains Mono', monospace;
     }
 
-    /* ── Reset ──────────────────────────────────── */
+    /* ─── Reset ─────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body {
-      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-      background: var(--d365-bg);
-      color: var(--text-1);
-      display: flex;
-      min-height: 100vh;
+      font-family: var(--font);
+      background: var(--space);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
-    a { color: inherit; text-decoration: none; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
-    /* ── Sidebar ────────────────────────────────── */
-    .sidebar {
-      width: var(--sidebar-w);
-      min-height: 100vh;
-      background: var(--sidebar-bg);
+    /* ─── Scrollbar ─────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--space); }
+    ::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.3); border-radius: 2px; }
+
+    /* ─── Utilities ─────────────────────────────────── */
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      backdrop-filter: blur(20px);
+    }
+    .section-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--white);
+    }
+    .neon-line {
+      display: block;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), transparent);
+      opacity: 0.4;
+      margin: 0 auto;
+    }
+    .reveal { opacity: 0; transform: translateY(40px); }
+
+    /* ─── NAV ───────────────────────────────────────── */
+    .nav {
       position: fixed;
-      left: 0; top: 0; bottom: 0;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(24px);
+      background: rgba(5,7,16,0.85);
+      border-bottom: 1px solid var(--border);
+      transform: translateY(-100%);
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .nav.show { transform: translateY(0); }
+    .nav-brand {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--cyan);
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      padding: 8px 20px;
+      border-radius: 8px;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.3);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: rgba(0,212,255,0.18); }
+
+    /* ─── HERO ──────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-glow-1 {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
+      top: -100px; left: -100px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(157,0,255,0.1) 0%, transparent 70%);
+      bottom: -50px; right: -100px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: column;
-      z-index: 100;
-      transition: transform .3s ease;
+      align-items: center;
+      text-align: center;
+      gap: 28px;
+      padding: 40px 24px;
+      max-width: 900px;
     }
-    .sidebar-logo {
-      padding: 18px 20px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+    .hero-mcid {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(0,212,255,0.6);
+      letter-spacing: 2px;
+      padding: 6px 16px;
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 100px;
+      background: rgba(0,212,255,0.05);
+    }
+    .hero-avatar-wrap {
+      position: relative;
+      width: 120px; height: 120px;
+    }
+    .hero-avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(0,212,255,0.4);
+      box-shadow: 0 0 40px rgba(0,212,255,0.25), 0 0 80px rgba(157,0,255,0.15);
+    }
+    .hero-avatar-ring {
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,212,255,0.25);
+      animation: ring-pulse 3s ease-in-out infinite;
+    }
+    .hero-avatar-dot {
+      position: absolute;
+      bottom: 6px; right: 6px;
+      width: 16px; height: 16px;
+      background: var(--green);
+      border-radius: 50%;
+      border: 3px solid var(--space);
+      box-shadow: 0 0 10px var(--green);
+    }
+    @keyframes ring-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+    .hero-name {
+      font-size: clamp(52px, 9vw, 96px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, var(--white) 40%, rgba(0,212,255,0.8) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-role {
+      font-size: clamp(14px, 2.2vw, 20px);
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      max-width: 480px;
+    }
+    .hero-role span {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .hero-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--border2);
+      background: var(--glass2);
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .hero-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .hero-cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,212,255,0.3);
+      background: rgba(0,212,255,0.08);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+    .hero-cert-badge svg { width: 18px; height: 18px; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 2px;
+    }
+    .hero-scroll-bar {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(0,212,255,0.5), transparent);
+      animation: scroll-drop 1.8s ease-in-out infinite;
+    }
+    @keyframes scroll-drop {
+      0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    /* ─── STATS ─────────────────────────────────────── */
+    #stats {
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .stat-card {
+      padding: 28px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .stat-card:hover { transform: translateY(-4px); }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .stat-card:nth-child(1)::before { background: linear-gradient(90deg, var(--purple), transparent); }
+    .stat-card:nth-child(2)::before { background: linear-gradient(90deg, var(--cyan), transparent); }
+    .stat-card:nth-child(3)::before { background: linear-gradient(90deg, var(--green), transparent); }
+    .stat-card:nth-child(4)::before { background: linear-gradient(90deg, var(--amber), transparent); }
+    .stat-card:nth-child(1):hover { border-color: rgba(157,0,255,0.3); }
+    .stat-card:nth-child(2):hover { border-color: rgba(0,212,255,0.3); }
+    .stat-card:nth-child(3):hover { border-color: rgba(0,255,140,0.3); }
+    .stat-card:nth-child(4):hover { border-color: rgba(255,180,0,0.3); }
+    .stat-num {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .stat-card:nth-child(1) .stat-num { color: var(--purple); }
+    .stat-card:nth-child(2) .stat-num { color: var(--cyan); }
+    .stat-card:nth-child(3) .stat-num { color: var(--green); }
+    .stat-card:nth-child(4) .stat-num { color: var(--amber); }
+    .stat-suffix { font-size: 28px; }
+    .stat-label {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ─── SECTIONS COMMON ───────────────────────────── */
+    .section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      margin-bottom: 64px;
+    }
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      border-radius: 2px;
+      margin-top: 16px;
+    }
+
+    /* ─── ABOUT ─────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 32px;
+      align-items: start;
+    }
+    .about-summary {
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+    }
+    .about-summary p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+    .about-summary strong { color: var(--white); font-weight: 600; }
+    .about-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .flow-node {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.3px;
+    }
+    .flow-arrow {
+      color: rgba(255,255,255,0.2);
+      font-size: 14px;
+    }
+    .stack-panel {
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+    }
+    .stack-panel-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 20px;
+    }
+    .stack-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      margin-bottom: 8px;
+      transition: all 0.2s;
+    }
+    .stack-row:last-child { margin-bottom: 0; }
+    .stack-row:hover {
+      border-color: var(--border2);
+      background: var(--glass2);
+    }
+    .stack-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .stack-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      flex: 1;
+    }
+    .stack-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    /* ─── EXPERIENCE ────────────────────────────────── */
+    #experience-section { position: relative; }
+    .exp-timeline {
+      position: relative;
+      padding-left: 48px;
+    }
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px; top: 16px; bottom: 16px;
+      width: 2px;
+      background: linear-gradient(to bottom,
+        var(--purple) 0%,
+        var(--cyan) 40%,
+        var(--green) 80%,
+        transparent 100%
+      );
+      border-radius: 2px;
+    }
+    .exp-item {
+      position: relative;
+      margin-bottom: 48px;
+    }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-dot {
+      position: absolute;
+      left: -44px;
+      top: 24px;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2px solid;
+      background: var(--space);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .exp-dot::after {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .exp-item:nth-child(1) .exp-dot { border-color: var(--purple); box-shadow: 0 0 16px rgba(157,0,255,0.5); }
+    .exp-item:nth-child(1) .exp-dot::after { background: var(--purple); }
+    .exp-item:nth-child(2) .exp-dot { border-color: var(--cyan); box-shadow: 0 0 16px rgba(0,212,255,0.5); }
+    .exp-item:nth-child(2) .exp-dot::after { background: var(--cyan); }
+    .exp-item:nth-child(3) .exp-dot { border-color: var(--green); box-shadow: 0 0 16px rgba(0,255,140,0.4); }
+    .exp-item:nth-child(3) .exp-dot::after { background: var(--green); }
+    .exp-card {
+      padding: 36px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .exp-item:nth-child(1) .exp-card:hover { border-color: rgba(157,0,255,0.25); }
+    .exp-item:nth-child(2) .exp-card:hover { border-color: rgba(0,212,255,0.25); }
+    .exp-item:nth-child(3) .exp-card:hover { border-color: rgba(0,255,140,0.2); }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+    }
+    .exp-item:nth-child(1) .exp-card::before { background: linear-gradient(to bottom, var(--purple), transparent); }
+    .exp-item:nth-child(2) .exp-card::before { background: linear-gradient(to bottom, var(--cyan), transparent); }
+    .exp-item:nth-child(3) .exp-card::before { background: linear-gradient(to bottom, var(--green), transparent); }
+    .exp-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .exp-role {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+    }
+    .exp-period {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: var(--glass2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .exp-company {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .exp-item:nth-child(1) .exp-company { color: var(--purple); }
+    .exp-item:nth-child(2) .exp-company { color: var(--cyan); }
+    .exp-item:nth-child(3) .exp-company { color: var(--green); }
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .exp-bullets li {
+      display: flex;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+    .exp-bullets li::before {
+      content: '▸';
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 10px;
+    }
+    .exp-item:nth-child(1) .exp-bullets li::before { color: var(--purple); }
+    .exp-item:nth-child(2) .exp-bullets li::before { color: var(--cyan); }
+    .exp-item:nth-child(3) .exp-bullets li::before { color: var(--green); }
+    .exp-bullets li strong { color: var(--white); font-weight: 600; }
+
+    /* ─── CERTIFICATIONS ────────────────────────────── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .cert-card {
+      padding: 20px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+    .cert-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border2);
+      background: var(--glass2);
+    }
+    .cert-badge-wrap {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .cb-expert { background: linear-gradient(135deg, #c8601a, #f7630c); box-shadow: 0 4px 20px rgba(200,96,26,0.35); }
+    .cb-pl     { background: linear-gradient(135deg, #742774, #9c27b0); box-shadow: 0 4px 20px rgba(116,39,116,0.35); }
+    .cb-mb     { background: linear-gradient(135deg, #0066b8, #00bcf2); box-shadow: 0 4px 20px rgba(0,120,212,0.35); }
+    .cert-code {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .cert-name {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    /* ─── SKILLS ────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .skill-group-card {
+      padding: 32px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+    }
+    .skill-group-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .s-tag {
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid;
+      transition: all 0.2s;
+    }
+    .s-tag:hover { transform: translateY(-2px); }
+    .tag-p { color: #c77dff; border-color: rgba(157,0,255,0.3); background: rgba(157,0,255,0.08); }
+    .tag-p:hover { background: rgba(157,0,255,0.15); border-color: rgba(157,0,255,0.5); }
+    .tag-b { color: #48cae4; border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.06); }
+    .tag-b:hover { background: rgba(0,212,255,0.12); border-color: rgba(0,212,255,0.5); }
+    .tag-t { color: #52f0a0; border-color: rgba(0,255,140,0.25); background: rgba(0,255,140,0.06); }
+    .tag-t:hover { background: rgba(0,255,140,0.12); border-color: rgba(0,255,140,0.4); }
+    .tag-o { color: #ffd166; border-color: rgba(255,180,0,0.25); background: rgba(255,180,0,0.06); }
+    .tag-o:hover { background: rgba(255,180,0,0.12); border-color: rgba(255,180,0,0.4); }
+
+    /* ─── CONTACT ───────────────────────────────────── */
+    #contact-section {
+      padding: 100px 40px;
+    }
+    .contact-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px;
+      border-radius: 24px;
+      border: 1px solid var(--border2);
+      background: linear-gradient(135deg, rgba(157,0,255,0.08), rgba(0,212,255,0.05));
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--purple), var(--cyan), transparent);
+    }
+    .contact-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--white), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .contact-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .contact-item {
       display: flex;
       align-items: center;
       gap: 10px;
-    }
-    .logo-icon {
-      width: 32px; height: 32px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, var(--pp-purple), var(--pp-blue));
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 15px; flex-shrink: 0;
-    }
-    .logo-text { font-size: 12.5px; font-weight: 600; color: #fff; line-height: 1.2; }
-    .logo-text span { display: block; font-size: 10px; font-weight: 400; color: rgba(255,255,255,.4); margin-top: 1px; }
-
-    .sidebar-nav { flex: 1; padding: 10px 0; overflow-y: auto; }
-    .sidebar-nav::-webkit-scrollbar { width: 3px; }
-    .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
-
-    .nav-group-label {
-      font-size: 9.5px; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: rgba(255,255,255,.3);
-      padding: 14px 20px 3px;
-    }
-    .nav-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 9px 20px;
-      color: rgba(255,255,255,.72);
-      font-size: 13px; font-weight: 400;
-      cursor: pointer;
-      border-left: 3px solid transparent;
-      transition: all .15s;
-    }
-    .nav-item:hover { color: #fff; background: rgba(255,255,255,.06); }
-    .nav-item.active {
-      color: #fff; font-weight: 500;
-      background: rgba(116,39,116,.28);
-      border-left-color: var(--pp-purple);
-    }
-    .nav-icon { width: 16px; text-align: center; font-size: 13px; }
-    .nav-badge {
-      margin-left: auto; background: var(--pp-purple);
-      color: #fff; font-size: 9.5px; font-weight: 700;
-      padding: 1px 6px; border-radius: 10px;
-    }
-
-    .sidebar-footer {
-      padding: 14px 20px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .sidebar-avatar {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--pp-purple), var(--pp-blue));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0;
-    }
-    .sidebar-user { flex: 1; min-width: 0; }
-    .sidebar-user-name { font-size: 12px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .sidebar-user-sub  { font-size: 10px; color: rgba(255,255,255,.38); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-    /* ── Main ───────────────────────────────────── */
-    .main { margin-left: var(--sidebar-w); flex: 1; min-height: 100vh; display: flex; flex-direction: column; }
-
-    /* ── Topbar ─────────────────────────────────── */
-    .topbar {
-      background: #fff; border-bottom: 1px solid var(--border);
-      padding: 0 28px; height: 46px;
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 50;
-    }
-    .breadcrumb { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--text-2); }
-    .breadcrumb .active { color: var(--text-1); font-weight: 500; }
-    .breadcrumb .sep { font-size: 9px; }
-    .topbar-right { display: flex; align-items: center; gap: 8px; }
-    .status-pill {
-      display: inline-flex; align-items: center; gap: 5px;
-      padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;
-    }
-    .status-pill.open { background: rgba(73,130,5,.1); color: #498205; }
-    .status-pill.open::before { content:''; width:6px; height:6px; border-radius:50%; background:#57a300; }
-    .tbtn {
-      padding: 5px 14px; border-radius: 3px; font-size: 12.5px; font-weight: 500;
-      cursor: pointer; border: 1px solid transparent; display: inline-flex; align-items: center; gap: 6px;
-      transition: all .15s;
-    }
-    .tbtn.primary { background: var(--pp-blue); color: #fff; }
-    .tbtn.primary:hover { background: #106ebe; }
-    .tbtn.ghost { background: #fff; color: var(--text-1); border-color: #8a8886; }
-    .tbtn.ghost:hover { background: var(--d365-bg); }
-
-    /* ── Record Header ──────────────────────────── */
-    .record-header {
-      background: #fff; border-bottom: 1px solid var(--border);
-      position: relative; overflow: hidden;
-    }
-    .rh-bg-gradient {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(116,39,116,.05) 0%, rgba(0,120,212,.04) 60%, rgba(0,188,242,.03) 100%);
-    }
-    .rh-bg-dots {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(116,39,116,.14) 1px, transparent 1px);
-      background-size: 26px 26px;
-      animation: dotdrift 22s ease-in-out infinite;
-    }
-    @keyframes dotdrift { 0%,100%{transform:translate(0,0)} 50%{transform:translate(5px,5px)} }
-    .rh-content {
-      position: relative; z-index: 1;
-      padding: 28px 32px;
-      display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
-    }
-    .profile-av-wrap { position: relative; flex-shrink: 0; }
-    .profile-av {
-      width: 84px; height: 84px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--pp-purple) 0%, var(--pp-blue) 55%, var(--pp-cyan) 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 30px; font-weight: 800; color: #fff;
-      border: 3px solid #fff;
-      box-shadow: 0 4px 18px rgba(116,39,116,.35);
-      overflow: hidden;
-    }
-    .profile-av img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .profile-dot {
-      position: absolute; bottom: 4px; right: 4px;
-      width: 13px; height: 13px; border-radius: 50%;
-      background: #57a300; border: 2px solid #fff;
-    }
-    .profile-info { flex: 1; min-width: 0; }
-    .profile-name { font-size: 24px; font-weight: 700; line-height: 1.1; margin-bottom: 3px; }
-    .profile-role { font-size: 13.5px; font-weight: 500; color: var(--pp-purple); margin-bottom: 10px; }
-    .profile-meta { display: flex; flex-wrap: wrap; gap: 14px; }
-    .pmeta-item { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--text-2); }
-    .pmeta-item i { color: var(--pp-blue); font-size: 11px; }
-    .pmeta-item a { color: var(--pp-blue); }
-    .pmeta-item a:hover { text-decoration: underline; }
-    .cert-badge-hero {
-      flex-shrink: 0;
-      background: linear-gradient(135deg, var(--pp-purple), #9c27b0);
-      color: #fff; padding: 7px 16px; border-radius: 20px;
-      font-size: 12px; font-weight: 600;
-      display: flex; align-items: center; gap: 6px;
-    }
-
-    /* ── KPI Strip ──────────────────────────────── */
-    .kpi-strip {
-      padding: 20px 28px;
-      display: grid; grid-template-columns: repeat(4,1fr); gap: 14px;
-    }
-    .kpi-card {
-      background: #fff; border-radius: 5px;
-      padding: 18px 20px; box-shadow: var(--shadow-sm);
-      display: flex; align-items: center; gap: 14px;
-      border-left: 4px solid;
-      transition: box-shadow .2s;
-    }
-    .kpi-card:hover { box-shadow: var(--shadow-md); }
-    .kpi-card:nth-child(1) { border-left-color: var(--pp-purple); }
-    .kpi-card:nth-child(2) { border-left-color: var(--pp-blue); }
-    .kpi-card:nth-child(3) { border-left-color: var(--pp-teal); }
-    .kpi-card:nth-child(4) { border-left-color: var(--pp-green); }
-    .kpi-icon {
-      width: 42px; height: 42px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
-    }
-    .kpi-card:nth-child(1) .kpi-icon { background: rgba(116,39,116,.1); color: var(--pp-purple); }
-    .kpi-card:nth-child(2) .kpi-icon { background: rgba(0,120,212,.1); color: var(--pp-blue); }
-    .kpi-card:nth-child(3) .kpi-icon { background: rgba(0,178,148,.1); color: var(--pp-teal); }
-    .kpi-card:nth-child(4) .kpi-icon { background: rgba(73,130,5,.1); color: var(--pp-green); }
-    .kpi-num { font-size: 26px; font-weight: 800; line-height: 1; color: var(--text-1); }
-    .kpi-lbl { font-size: 11.5px; color: var(--text-2); margin-top: 2px; }
-
-    /* ── Grid Layout ────────────────────────────── */
-    .page-grid {
-      padding: 0 28px 32px;
-      display: grid;
-      grid-template-columns: 1fr 328px;
-      gap: 18px;
-      flex: 1;
-    }
-    .col-main { display: flex; flex-direction: column; gap: 18px; }
-    .col-side  { display: flex; flex-direction: column; gap: 18px; }
-
-    /* ── Card ───────────────────────────────────── */
-    .card {
-      background: #fff; border-radius: 5px;
-      box-shadow: var(--shadow-sm); overflow: hidden;
-      transition: box-shadow .2s;
-    }
-    .card:hover { box-shadow: var(--shadow-md); }
-    .card-head {
-      padding: 14px 22px; border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .card-title {
-      font-size: 13.5px; font-weight: 600; color: var(--text-1);
-      display: flex; align-items: center; gap: 7px;
-    }
-    .card-title i { color: var(--pp-blue); font-size: 13px; }
-    .card-body { padding: 18px 22px; }
-
-    /* ── Summary ────────────────────────────────── */
-    .summary-text { font-size: 13.5px; line-height: 1.75; color: var(--text-2); }
-    .summary-text strong { color: var(--text-1); font-weight: 600; }
-    .data-flow { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-top: 16px; }
-    .df-node { padding: 4px 11px; border-radius: 4px; font-size: 11px; font-weight: 600; color: #fff; }
-    .df-arrow { color: var(--text-2); font-size: 11px; }
-
-    /* ── Timeline ───────────────────────────────── */
-    .timeline { position: relative; }
-    .timeline::before {
-      content: ''; position: absolute;
-      left: 18px; top: 4px; bottom: 0; width: 2px;
-      background: linear-gradient(to bottom, var(--pp-purple), var(--pp-blue), var(--pp-cyan));
-      border-radius: 1px;
-    }
-    .tl-item { display: flex; gap: 18px; margin-bottom: 26px; }
-    .tl-item:last-child { margin-bottom: 0; }
-    .tl-dot {
-      width: 38px; height: 38px; border-radius: 50%;
-      border: 2.5px solid var(--pp-blue);
-      background: rgba(0,120,212,.07);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; position: relative; z-index: 1;
-      font-size: 13px; color: var(--pp-blue);
-    }
-    .tl-item:first-child .tl-dot { border-color: var(--pp-purple); color: var(--pp-purple); background: rgba(116,39,116,.08); }
-    .tl-body { flex: 1; }
-    .tl-role { font-size: 14px; font-weight: 600; color: var(--text-1); line-height: 1.25; }
-    .tl-company { font-size: 12px; color: var(--pp-blue); font-weight: 500; margin-top: 2px; }
-    .tl-period {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 11px; color: var(--text-2);
-      background: var(--d365-bg); padding: 2px 9px; border-radius: 11px;
-      margin-top: 5px;
-    }
-    .tl-bullets { list-style: none; margin-top: 9px; }
-    .tl-bullets li {
-      font-size: 12.5px; color: var(--text-2); line-height: 1.55;
-      padding: 2px 0 2px 14px; position: relative;
-    }
-    .tl-bullets li::before { content:'▸'; position:absolute; left:0; top:4px; color:var(--pp-purple); font-size:9px; }
-    .tl-bullets li strong { color: var(--text-1); font-weight: 600; }
-
-    /* ── Skills ─────────────────────────────────── */
-    .skill-group { margin-bottom: 14px; }
-    .skill-group:last-child { margin-bottom: 0; }
-    .skill-cat {
-      font-size: 10.5px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .7px; color: var(--text-2); margin-bottom: 7px;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .skill-cat::after { content:''; flex:1; height:1px; background:var(--border); }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-    .tag {
-      padding: 3px 9px; border-radius: 3px; font-size: 11.5px;
-      font-weight: 500; border: 1px solid;
-    }
-    .tag.p { background:rgba(116,39,116,.07); color:#742774; border-color:rgba(116,39,116,.2); }
-    .tag.b { background:rgba(0,120,212,.07); color:#0078d4; border-color:rgba(0,120,212,.2); }
-    .tag.t { background:rgba(0,178,148,.07); color:#007b65; border-color:rgba(0,178,148,.2); }
-    .tag.g { background:rgba(73,130,5,.07);  color:#498205; border-color:rgba(73,130,5,.2);  }
-    .tag.o { background:rgba(200,96,26,.07); color:#c8601a; border-color:rgba(200,96,26,.2); }
-
-    /* ── Certs ───────────────────────────────────── */
-    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
-    .cert-item {
-      display: flex; align-items: center; gap: 9px;
-      padding: 10px 11px; border-radius: 5px;
+      padding: 12px 20px;
+      border-radius: 12px;
       border: 1px solid var(--border);
-      transition: all .18s; cursor: pointer;
+      background: var(--glass);
+      font-size: 14px;
+      color: var(--muted);
     }
-    .cert-item:hover { border-color: var(--pp-blue); background: rgba(0,120,212,.03); transform: translateY(-1px); }
-    .cert-badge {
-      width: 34px; height: 34px; border-radius: 5px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 9.5px; font-weight: 800; color: #fff; text-align: center; line-height: 1.1;
+    .contact-item svg { width: 16px; height: 16px; color: var(--cyan); flex-shrink: 0; }
+    .contact-item a { color: var(--white); font-weight: 600; }
+    .contact-item a:hover { color: var(--cyan); }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    .cb-expert { background: linear-gradient(135deg,#c8601a,#f7630c); }
-    .cb-pl     { background: linear-gradient(135deg,#742774,#9c27b0); }
-    .cb-mb     { background: linear-gradient(135deg,#0078d4,#00bcf2); }
-    .cert-code { font-size: 10px; font-weight: 700; color: var(--text-2); }
-    .cert-name { font-size: 11px; font-weight: 500; color: var(--text-1); line-height: 1.2; }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border2);
+      background: var(--glass2);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      transition: all 0.25s;
+    }
+    .social-link:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      transform: translateY(-3px);
+    }
+    .social-link svg { width: 16px; height: 16px; }
 
-    /* ── Contact ─────────────────────────────────── */
-    .contact-list { list-style: none; }
-    .contact-list li {
-      display: flex; align-items: center; gap: 11px;
-      padding: 9px 0; border-bottom: 1px solid var(--border);
-      font-size: 12.5px;
+    /* ─── FOOTER ────────────────────────────────────── */
+    footer {
+      padding: 32px 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
     }
-    .contact-list li:last-child { border: none; }
-    .c-icon {
-      width: 30px; height: 30px; border-radius: 5px;
-      background: rgba(0,120,212,.09); color: var(--pp-blue);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; flex-shrink: 0;
-    }
-    .contact-list li a { color: var(--pp-blue); font-weight: 500; }
-    .contact-list li a:hover { text-decoration: underline; }
-    .social-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
-    .slink {
-      display: flex; align-items: center; gap: 5px;
-      padding: 6px 12px; border-radius: 4px; font-size: 12px;
-      font-weight: 500; border: 1px solid var(--border); color: var(--text-1);
-      transition: all .15s;
-    }
-    .slink:hover { border-color: var(--pp-blue); color: var(--pp-blue); }
-    .slink i { font-size: 13px; }
+    footer a { color: rgba(0,212,255,0.5); }
+    footer a:hover { color: var(--cyan); }
 
-    /* ── Education ───────────────────────────────── */
-    .edu-row { display: flex; align-items: flex-start; gap: 12px; }
-    .edu-icon {
-      width: 34px; height: 34px; border-radius: 7px; flex-shrink: 0;
-      background: rgba(116,39,116,.1); color: var(--pp-purple);
-      display: flex; align-items: center; justify-content: center; font-size: 15px;
-    }
-    .edu-deg { font-size: 13px; font-weight: 600; color: var(--text-1); }
-    .edu-sch { font-size: 12px; color: var(--text-2); margin-top: 2px; }
-    .edu-yr  { font-size: 11px; color: var(--pp-blue); font-weight: 500; margin-top: 2px; }
-
-    /* ── Hire strip ──────────────────────────────── */
-    .hire-strip {
-      background: linear-gradient(135deg, var(--pp-purple) 0%, #0078d4 100%);
-      padding: 22px 32px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    }
-    .hire-text h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-    .hire-text p  { font-size: 13px; color: rgba(255,255,255,.8); }
-    .hire-btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 9px 22px; background: #fff; color: var(--pp-purple);
-      font-size: 13.5px; font-weight: 600; border-radius: 4px;
-      white-space: nowrap; transition: all .2s;
-    }
-    .hire-btn:hover { background: rgba(255,255,255,.9); transform: translateY(-1px); }
-
-    /* ── Footer ──────────────────────────────────── */
-    .site-footer {
-      background: var(--sidebar-bg); color: rgba(255,255,255,.42);
-      font-size: 11.5px; padding: 14px 28px; text-align: center;
-    }
-    .site-footer a { color: rgba(255,255,255,.6); }
-
-    /* ── Mobile toggle ───────────────────────────── */
-    .mob-toggle {
-      display: none; position: fixed; top: 10px; left: 10px; z-index: 200;
-      width: 36px; height: 36px; background: var(--sidebar-bg);
-      border: none; border-radius: 5px; color: #fff; font-size: 15px;
-      cursor: pointer; align-items: center; justify-content: center;
+    /* ─── BG GRID OVERLAY ───────────────────────────── */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
 
-    /* ── Scroll fade ─────────────────────────────── */
-    .fi { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-    .fi.show { opacity: 1; transform: translateY(0); }
-
-    /* ── Responsive ──────────────────────────────── */
-    @media (max-width: 1080px) {
-      .kpi-strip { grid-template-columns: repeat(2,1fr); }
-      .page-grid  { grid-template-columns: 1fr; }
+    /* ─── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: repeat(3, 1fr); }
+      .skills-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 860px) {
-      .sidebar { transform: translateX(-100%); width: 252px; }
-      .sidebar.open { transform: translateX(0); }
-      .mob-toggle { display: flex; }
-      .main { margin-left: 0; }
-      .topbar { padding-left: 56px; }
-      .rh-content { padding: 20px 18px; }
-      .kpi-strip  { padding: 16px 18px; }
-      .page-grid  { padding: 0 18px 24px; }
-      .hire-strip { flex-direction: column; text-align: center; }
-    }
-    @media (max-width: 540px) {
-      .kpi-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .cert-grid { grid-template-columns: 1fr; }
-      .profile-meta { gap: 8px; }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .section { padding: 80px 24px; }
+      #stats { padding: 40px 24px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .exp-timeline { padding-left: 32px; }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-wrap { padding: 40px 24px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+      .hero-name { letter-spacing: -1px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Mobile toggle -->
-<button class="mob-toggle" id="sidebarToggle" aria-label="Toggle menu">
-  <i class="fas fa-bars"></i>
-</button>
+<!-- Background grid -->
+<div class="grid-overlay"></div>
 
-<!-- ════════════════════════════════════
-     SIDEBAR
-════════════════════════════════════ -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo">
-    <div class="logo-icon"><i class="fas fa-cubes"></i></div>
-    <div class="logo-text">Dynamics 365 <span>Power Platform · Resume</span></div>
-  </div>
+<!-- ─── NAV ──────────────────────────────────────── -->
+<nav class="nav" id="main-nav">
+  <div class="nav-brand">AUH // D365 &amp; PP</div>
+  <ul class="nav-links">
+    <li><a href="#about-section">About</a></li>
+    <li><a href="#experience-section">Experience</a></li>
+    <li><a href="#certifications-section">Certifications</a></li>
+    <li><a href="#skills-section">Skills</a></li>
+  </ul>
+  <a href="mailto:anwarluck@outlook.com" class="nav-cta">Hire Me</a>
+</nav>
 
-  <nav class="sidebar-nav">
-    <div class="nav-group-label">Profile</div>
-    <a class="nav-item active" href="#top">
-      <span class="nav-icon"><i class="fas fa-user-circle"></i></span>Overview
-    </a>
-    <a class="nav-item" href="#summary">
-      <span class="nav-icon"><i class="fas fa-align-left"></i></span>Summary
-    </a>
+<!-- ─── HERO ──────────────────────────────────────── -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
 
-    <div class="nav-group-label">Work &amp; Skills</div>
-    <a class="nav-item" href="#experience">
-      <span class="nav-icon"><i class="fas fa-briefcase"></i></span>Experience
-    </a>
-    <a class="nav-item" href="#skills">
-      <span class="nav-icon"><i class="fas fa-code"></i></span>Technical Skills
-    </a>
-    <a class="nav-item" href="#certifications">
-      <span class="nav-icon"><i class="fas fa-certificate"></i></span>Certifications
-      <span class="nav-badge">10</span>
-    </a>
+  <div class="hero-content">
+    <div class="hero-mcid" id="h-mcid">MICROSOFT ID: 991520706 // DOHA, QATAR</div>
 
-    <div class="nav-group-label">More</div>
-    <a class="nav-item" href="#education">
-      <span class="nav-icon"><i class="fas fa-graduation-cap"></i></span>Education
-    </a>
-    <a class="nav-item" href="#contact">
-      <span class="nav-icon"><i class="fas fa-envelope"></i></span>Contact
-    </a>
-  </nav>
-
-  <div class="sidebar-footer">
-    <div class="sidebar-avatar">AH</div>
-    <div class="sidebar-user">
-      <div class="sidebar-user-name">Anwar Ul Haq</div>
-      <div class="sidebar-user-sub">MCID: 991520706</div>
+    <div class="hero-avatar-wrap" id="h-avatar">
+      <img class="hero-avatar" src="assets/images/c-1.png" alt="Anwar Ul Haq">
+      <div class="hero-avatar-ring"></div>
+      <div class="hero-avatar-dot"></div>
     </div>
-  </div>
-</aside>
 
-<!-- ════════════════════════════════════
-     MAIN
-════════════════════════════════════ -->
-<main class="main" id="top">
+    <h1 class="hero-name" id="h-name">Anwar Ul Haq</h1>
 
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="breadcrumb">
-      <span>Consultants</span>
-      <span class="sep">›</span>
-      <span>Dynamics 365</span>
-      <span class="sep">›</span>
-      <span class="active">Anwar Ul Haq</span>
+    <p class="hero-role" id="h-role">
+      Senior <span>Dynamics 365 CRM</span> &amp; <span>Power Platform</span> Consultant
+    </p>
+
+    <div class="hero-pills" id="h-pills">
+      <span class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Doha, Qatar
+      </span>
+      <span class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        anwarluck@outlook.com
+      </span>
+      <span class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +974 7134 2346
+      </span>
     </div>
-    <div class="topbar-right">
-      <span class="status-pill open">Available</span>
-      <a href="mailto:anwarluck@outlook.com" class="tbtn primary"><i class="fas fa-paper-plane"></i> Contact</a>
-      <a href="https://www.linkedin.com/in/anwarluck/" target="_blank" rel="noopener" class="tbtn ghost"><i class="fab fa-linkedin"></i></a>
+
+    <div class="hero-cert-badge" id="h-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+      10× Microsoft Certified — PL-600 Solution Architect Expert
     </div>
   </div>
 
-  <!-- Record Header -->
-  <section id="hero" class="record-header">
-    <div class="rh-bg-gradient"></div>
-    <div class="rh-bg-dots"></div>
-    <div class="rh-content">
-      <div class="profile-av-wrap">
-        <div class="profile-av"><img src="assets/images/c-1.png" alt="Anwar Ul Haq"></div>
-        <div class="profile-dot"></div>
-      </div>
-      <div class="profile-info">
-        <h1 class="profile-name">Anwar Ul Haq</h1>
-        <div class="profile-role">Senior Dynamics 365 CRM &amp; Power Platform Consultant</div>
-        <div class="profile-meta">
-          <span class="pmeta-item"><i class="fas fa-envelope"></i><a href="mailto:anwarluck@outlook.com">anwarluck@outlook.com</a></span>
-          <span class="pmeta-item"><i class="fas fa-phone"></i>+974 7134 2346</span>
-          <span class="pmeta-item"><i class="fas fa-map-marker-alt"></i>Doha, Qatar</span>
-          <span class="pmeta-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/anwarluck/" target="_blank" rel="noopener">linkedin.com/in/anwarluck</a></span>
-        </div>
-      </div>
-      <div class="cert-badge-hero"><i class="fas fa-award"></i> 10× Microsoft Certified</div>
-    </div>
-  </section>
+  <div class="hero-scroll">
+    <div class="hero-scroll-bar"></div>
+    SCROLL
+  </div>
+</section>
 
-  <!-- KPI Strip -->
-  <div class="kpi-strip">
-    <div class="kpi-card fi">
-      <div class="kpi-icon"><i class="fas fa-calendar-alt"></i></div>
-      <div><div class="kpi-num counter" data-to="6">0</div><div class="kpi-lbl">+ Years Experience</div></div>
+<!-- ─── STATS ─────────────────────────────────────── -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-num"><span class="counter" data-to="6">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">Years Experience</div>
     </div>
-    <div class="kpi-card fi">
-      <div class="kpi-icon"><i class="fas fa-certificate"></i></div>
-      <div><div class="kpi-num counter" data-to="10">0</div><div class="kpi-lbl">Active Certifications</div></div>
+    <div class="stat-card reveal">
+      <div class="stat-num"><span class="counter" data-to="10">0</span></div>
+      <div class="stat-label">Microsoft Certifications</div>
     </div>
-    <div class="kpi-card fi">
-      <div class="kpi-icon"><i class="fas fa-users"></i></div>
-      <div><div class="kpi-num counter" data-to="14">0</div><div class="kpi-lbl">Team Size Led</div></div>
+    <div class="stat-card reveal">
+      <div class="stat-num"><span class="counter" data-to="14">0</span></div>
+      <div class="stat-label">Team Size Led</div>
     </div>
-    <div class="kpi-card fi">
-      <div class="kpi-icon"><i class="fas fa-rocket"></i></div>
-      <div><div class="kpi-num counter" data-to="10">0</div><div class="kpi-lbl">+ CRM Implementations</div></div>
+    <div class="stat-card reveal">
+      <div class="stat-num"><span class="counter" data-to="10">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-label">CRM Implementations</div>
     </div>
   </div>
+</div>
 
-  <!-- Page Grid -->
-  <div class="page-grid">
-
-    <!-- ── LEFT COL ── -->
-    <div class="col-main">
-
-      <!-- Summary -->
-      <div id="summary" class="card fi">
-        <div class="card-head">
-          <div class="card-title"><i class="fas fa-align-left"></i> Professional Summary</div>
-        </div>
-        <div class="card-body">
-          <p class="summary-text">
-            Dynamics 365 CE and Power Platform specialist with <strong>6+ years</strong> building and leading CRM solutions
-            for government and commercial clients across Qatar and Pakistan. Strong in
-            <strong>C#/.NET plugin development</strong>, Dataverse architecture, Power Pages portals, and third-party
-            system integration. Led a <strong>14-person delivery team</strong> at a Doha-based Microsoft partner,
-            shipping public-sector platforms for MCIT, MSDF, and IPA Qatar.
-            Holds <strong>10 active Microsoft certifications</strong> including the PL-600 Solution Architect Expert.
-          </p>
-          <div class="data-flow">
-            <span class="df-node" style="background:#742774">Dataverse</span>
-            <span class="df-arrow">→</span>
-            <span class="df-node" style="background:#0078d4">Power Apps</span>
-            <span class="df-arrow">→</span>
-            <span class="df-node" style="background:#0066b8">Power Automate</span>
-            <span class="df-arrow">→</span>
-            <span class="df-node" style="background:#00bcf2">Power Pages</span>
-            <span class="df-arrow">→</span>
-            <span class="df-node" style="background:#498205">Power BI</span>
-            <span class="df-arrow">→</span>
-            <span class="df-node" style="background:#8764b8">Copilot Studio</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Experience -->
-      <div id="experience" class="card fi">
-        <div class="card-head">
-          <div class="card-title"><i class="fas fa-briefcase"></i> Professional Experience</div>
-        </div>
-        <div class="card-body">
-          <div class="timeline">
-
-            <!-- Role 1 -->
-            <div class="tl-item">
-              <div class="tl-dot"><i class="fas fa-star"></i></div>
-              <div class="tl-body">
-                <div class="tl-role">Senior Dynamics CRM &amp; Power Platform Consultant</div>
-                <div class="tl-company">Hassad Food — Qatar's National Food Security Company · Doha, Qatar</div>
-                <div class="tl-period"><i class="fas fa-clock"></i> Oct 2025 – Present</div>
-                <ul class="tl-bullets">
-                  <li>Maintain and extend <strong>Raqmana</strong>, Qatar's public-sector agriculture digitalization platform built on Dynamics 365 and Power Platform.</li>
-                  <li>Delivered a <strong>machinery booking module</strong> enabling farmers and agri-businesses to reserve government equipment, replacing a manual scheduling process.</li>
-                  <li>Built an <strong>AI-powered plant disease detection</strong> feature integrating Azure AI Services with Dynamics CRM — field workers identify crop diseases via image upload inside the platform.</li>
-                  <li>Developed a <strong>Trader Support Portal</strong> allowing suppliers to apply for government reimbursements online, streamlining subsidy claims for the agriculture supply chain.</li>
-                  <li>Built a <strong>feedback module</strong> capturing user satisfaction data to drive continuous improvement of platform services.</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Role 2 -->
-            <div class="tl-item">
-              <div class="tl-dot"><i class="fas fa-users-cog"></i></div>
-              <div class="tl-body">
-                <div class="tl-role">Team Lead — Dynamics CRM &amp; Power Platform</div>
-                <div class="tl-company">Applab · Doha, Qatar</div>
-                <div class="tl-period"><i class="fas fa-clock"></i> Jun 2023 – Sep 2025</div>
-                <ul class="tl-bullets">
-                  <li>Led a <strong>team of 14</strong> developers and consultants delivering Dynamics 365 and Power Platform solutions for Qatari government agencies.</li>
-                  <li><strong>Qatar Collaboration Hub (QCH) – MCIT:</strong> Architected a public-sector service request platform on Dynamics CRM, Power Pages, Azure App Service, and Azure AI Services with multi-stage approval workflows, custom SLAs, and a circular management module.</li>
-                  <li><strong>Watad E-Consultation – MSDF:</strong> Built a multi-channel consultation platform (face-to-face, Microsoft Teams, phone) with Angular frontend and Dynamics CRM backend, including social worker coordination and consultant scheduling.</li>
-                  <li><strong>IPA Qatar:</strong> Developed Incentives and Investment Relations modules with automated workflows, Power Pages customizations, custom Web APIs, and government entity data-exchange integrations.</li>
-                  <li>Consistently met or beat delivery timelines; enforced security and data-protection compliance across all government Power Pages portals.</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Role 3 -->
-            <div class="tl-item">
-              <div class="tl-dot"><i class="fas fa-code"></i></div>
-              <div class="tl-body">
-                <div class="tl-role">Dynamics 365 CE/CRM Consultant</div>
-                <div class="tl-company">Skysoft Connections · Islamabad, Pakistan</div>
-                <div class="tl-period"><i class="fas fa-clock"></i> Feb 2020 – Apr 2023</div>
-                <ul class="tl-bullets">
-                  <li>Delivered <strong>10+ CRM implementations</strong> across banking, healthcare, automotive, and retail clients in Pakistan and the Middle East.</li>
-                  <li>Integrated Dynamics CRM with <strong>WhatsApp Cloud API</strong> (custom Power Automate connector + webhooks), <strong>DocuSign</strong>, <strong>OneSignal</strong>, <strong>MS Bookings</strong>, and <strong>7Pace Time Tracker</strong>.</li>
-                  <li>Extended <strong>Auto Mercado CRM</strong> across multiple business units with custom plugins, web resources, SSRS reports, and SMS/push notification pipelines.</li>
-                  <li>Built <strong>SSIS data migration pipelines</strong> and <strong>SSRS report suites</strong>; developed Canvas Apps to replace manual business processes.</li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Skills -->
-      <div id="skills" class="card fi">
-        <div class="card-head">
-          <div class="card-title"><i class="fas fa-code"></i> Technical Skills</div>
-        </div>
-        <div class="card-body">
-
-          <div class="skill-group">
-            <div class="skill-cat">Dynamics 365 / Dataverse</div>
-            <div class="skill-tags">
-              <span class="tag p">Dynamics 365 CE</span>
-              <span class="tag p">Sales</span>
-              <span class="tag p">Customer Service</span>
-              <span class="tag p">Field Service</span>
-              <span class="tag p">Project Operations</span>
-              <span class="tag p">Customer Insights</span>
-              <span class="tag p">Dataverse</span>
-              <span class="tag p">Plugin Development</span>
-              <span class="tag p">Custom Actions</span>
-              <span class="tag p">Business Process Flows</span>
-              <span class="tag p">Security Roles</span>
-              <span class="tag p">PCF Controls</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <div class="skill-cat">Power Platform</div>
-            <div class="skill-tags">
-              <span class="tag b">Power Apps Canvas</span>
-              <span class="tag b">Model-Driven Apps</span>
-              <span class="tag b">Power Pages</span>
-              <span class="tag b">Power Automate</span>
-              <span class="tag b">Power BI</span>
-              <span class="tag b">Power Automate RPA</span>
-              <span class="tag b">Copilot Studio</span>
-              <span class="tag b">MCP for Dynamics CRM</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <div class="skill-cat">Development</div>
-            <div class="skill-tags">
-              <span class="tag t">C# / .NET</span>
-              <span class="tag t">JavaScript</span>
-              <span class="tag t">SQL</span>
-              <span class="tag t">SSIS</span>
-              <span class="tag t">Dynamics SDK</span>
-              <span class="tag t">Web API (REST)</span>
-              <span class="tag t">SSRS</span>
-              <span class="tag t">Azure Logic Apps</span>
-              <span class="tag t">Azure Functions</span>
-              <span class="tag t">Azure AI Services</span>
-              <span class="tag t">Angular (integration)</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <div class="skill-cat">Integration &amp; Tools</div>
-            <div class="skill-tags">
-              <span class="tag o">Microsoft Teams</span>
-              <span class="tag o">DocuSign</span>
-              <span class="tag o">WhatsApp Cloud API</span>
-              <span class="tag o">OneSignal</span>
-              <span class="tag o">7Pace</span>
-              <span class="tag o">MS Bookings</span>
-              <span class="tag o">XrmToolBox</span>
-              <span class="tag o">Postman</span>
-              <span class="tag o">SSMS</span>
-              <span class="tag o">Visual Studio 2022</span>
-              <span class="tag o">VS Code</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div><!-- /col-main -->
-
-    <!-- ── RIGHT COL ── -->
-    <div class="col-side">
-
-      <!-- Certifications -->
-      <div id="certifications" class="card fi">
-        <div class="card-head">
-          <div class="card-title"><i class="fas fa-certificate"></i> Certifications</div>
-          <span class="status-pill open">10 Active</span>
-        </div>
-        <div class="card-body" style="padding:14px">
-          <div class="cert-grid">
-
-            <a class="cert-item" href="https://www.credly.com/badges/78a8b26a-dd74-43ef-bd96-7ecd021739c3/public_url" target="_blank" rel="noopener">
-              <div class="cert-badge cb-expert">PL<br>600</div>
-              <div><div class="cert-code">PL-600</div><div class="cert-name">Solution Architect Expert</div></div>
-            </a>
-
-            <a class="cert-item" href="https://www.credly.com/badges/eb6cacc7-6c3c-4b9c-b405-b4c8c005f5c2/public_url" target="_blank" rel="noopener">
-              <div class="cert-badge cb-pl">PL<br>400</div>
-              <div><div class="cert-code">PL-400</div><div class="cert-name">PP Developer Associate</div></div>
-            </a>
-
-            <a class="cert-item" href="https://www.credly.com/badges/279a44bb-0ad6-4f81-ba51-2e2362141e4e/public_url" target="_blank" rel="noopener">
-              <div class="cert-badge cb-pl">PL<br>500</div>
-              <div><div class="cert-code">PL-500</div><div class="cert-name">RPA Developer Associate</div></div>
-            </a>
-
-            <a class="cert-item" href="https://www.credly.com/badges/5bd5d9ca-aab5-4415-b871-2f519575bcd5" target="_blank" rel="noopener">
-              <div class="cert-badge cb-pl">PL<br>200</div>
-              <div><div class="cert-code">PL-200</div><div class="cert-name">Functional Consultant Assoc.</div></div>
-            </a>
-
-            <a class="cert-item" href="https://www.credly.com/badges/3cb064a9-be82-44a0-8586-70049d59ede4/public_url" target="_blank" rel="noopener">
-              <div class="cert-badge cb-pl">PL<br>100</div>
-              <div><div class="cert-code">PL-100</div><div class="cert-name">App Maker Associate</div></div>
-            </a>
-
-            <a class="cert-item" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">
-              <div class="cert-badge cb-mb">MB<br>280</div>
-              <div><div class="cert-code">MB-280</div><div class="cert-name">Customer Experience Analyst</div></div>
-            </a>
-
-            <a class="cert-item" href="https://www.credly.com/badges/3856fa11-0950-4137-8507-01ad039fb6fe/public_url" target="_blank" rel="noopener">
-              <div class="cert-badge cb-mb">MB<br>240</div>
-              <div><div class="cert-code">MB-240</div><div class="cert-name">Field Service Consultant</div></div>
-            </a>
-
-            <a class="cert-item" href="https://learn.microsoft.com/en-gb/users/anwarluck/credentials/964797F5B5DD759C" target="_blank" rel="noopener">
-              <div class="cert-badge cb-mb">MB<br>230</div>
-              <div><div class="cert-code">MB-230</div><div class="cert-name">Customer Service Consultant</div></div>
-            </a>
-
-            <a class="cert-item" href="https://www.credly.com/badges/1b6c8445-63c1-4b35-9c32-33d85e2c9c91/public_url" target="_blank" rel="noopener">
-              <div class="cert-badge cb-mb">MB<br>220</div>
-              <div><div class="cert-code">MB-220</div><div class="cert-name">Marketing Consultant</div></div>
-            </a>
-
-            <a class="cert-item" href="https://www.credly.com/badges/6ca9f63f-a52e-4802-b6fc-d36a7c9f1577/public_url" target="_blank" rel="noopener">
-              <div class="cert-badge cb-mb">MB<br>210</div>
-              <div><div class="cert-code">MB-210</div><div class="cert-name">Sales Functional Consultant</div></div>
-            </a>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact -->
-      <div id="contact" class="card fi">
-        <div class="card-head">
-          <div class="card-title"><i class="fas fa-address-card"></i> Contact</div>
-        </div>
-        <div class="card-body" style="padding:14px 20px">
-          <ul class="contact-list">
-            <li>
-              <div class="c-icon"><i class="fas fa-envelope"></i></div>
-              <a href="mailto:anwarluck@outlook.com">anwarluck@outlook.com</a>
-            </li>
-            <li>
-              <div class="c-icon"><i class="fas fa-phone"></i></div>
-              <span>+974 7134 2346</span>
-            </li>
-            <li>
-              <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <span>Doha, Qatar</span>
-            </li>
-          </ul>
-          <div class="social-row">
-            <a href="https://www.linkedin.com/in/anwarluck/" target="_blank" rel="noopener" class="slink"><i class="fab fa-linkedin" style="color:#0A66C2"></i> LinkedIn</a>
-            <a href="https://github.com/anwarluck" target="_blank" rel="noopener" class="slink"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://instagram.com/anwarluck" target="_blank" rel="noopener" class="slink"><i class="fab fa-instagram" style="color:#E1306C"></i> Instagram</a>
-            <a href="https://www.fiverr.com/share/jpk30a" target="_blank" rel="noopener" class="slink" style="color:#1DBF73"><i class="fas fa-briefcase" style="color:#1DBF73"></i> Fiverr</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Education -->
-      <div id="education" class="card fi">
-        <div class="card-head">
-          <div class="card-title"><i class="fas fa-graduation-cap"></i> Education</div>
-        </div>
-        <div class="card-body">
-          <div class="edu-row">
-            <div class="edu-icon"><i class="fas fa-university"></i></div>
-            <div>
-              <div class="edu-deg">BSc Computer Science</div>
-              <div class="edu-sch">University of Swat, Pakistan</div>
-              <div class="edu-yr">Graduated Jan 2020</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /col-side -->
-  </div><!-- /page-grid -->
-
-  <!-- Hire strip -->
-  <div class="hire-strip">
-    <div class="hire-text">
-      <h3>Open to New Opportunities</h3>
-      <p>Available for Dynamics 365 &amp; Power Platform consulting — full-time, contract, or project-based.</p>
-    </div>
-    <a href="mailto:anwarluck@outlook.com" class="hire-btn"><i class="fas fa-paper-plane"></i> Get in Touch</a>
+<!-- ─── ABOUT ─────────────────────────────────────── -->
+<div id="about-section" class="section">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Who I Am</p>
+    <h2 class="section-title">Professional Summary</h2>
+    <div class="section-divider"></div>
   </div>
+  <div class="about-grid">
+    <div class="about-summary reveal">
+      <p>
+        Dynamics 365 CE and Power Platform specialist with <strong>6+ years</strong> building and leading CRM solutions
+        for government and commercial clients across Qatar and Pakistan. Strong in
+        <strong>C#/.NET plugin development</strong>, Dataverse architecture, Power Pages portals, and third-party
+        system integration. Led a <strong>14-person delivery team</strong> at a Doha-based Microsoft partner,
+        shipping public-sector platforms for MCIT, MSDF, and IPA Qatar.
+        Holds <strong>10 active Microsoft certifications</strong> including the PL-600 Solution Architect Expert.
+      </p>
+      <div class="about-flow">
+        <span class="flow-node" style="background:#742774">Dataverse</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node" style="background:#0078d4">Power Apps</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node" style="background:#0066b8">Power Automate</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node" style="background:#00bcf2">Power Pages</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node" style="background:#498205">Power BI</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node" style="background:#8764b8">Copilot Studio</span>
+      </div>
+    </div>
+    <div class="stack-panel reveal">
+      <div class="stack-panel-title">// Power Platform Stack</div>
+      <div class="stack-row">
+        <div class="stack-dot" style="background:#c77dff;box-shadow:0 0 8px rgba(157,0,255,0.6)"></div>
+        <div class="stack-name">Dataverse</div>
+        <span class="stack-badge" style="background:rgba(157,0,255,0.12);color:#c77dff;border:1px solid rgba(157,0,255,0.3)">Core</span>
+      </div>
+      <div class="stack-row">
+        <div class="stack-dot" style="background:#48cae4;box-shadow:0 0 8px rgba(0,212,255,0.6)"></div>
+        <div class="stack-name">Power Apps</div>
+        <span class="stack-badge" style="background:rgba(0,212,255,0.08);color:#48cae4;border:1px solid rgba(0,212,255,0.25)">Canvas + MDA</span>
+      </div>
+      <div class="stack-row">
+        <div class="stack-dot" style="background:#56cfe1;box-shadow:0 0 8px rgba(0,150,200,0.5)"></div>
+        <div class="stack-name">Power Automate</div>
+        <span class="stack-badge" style="background:rgba(0,100,184,0.1);color:#56cfe1;border:1px solid rgba(0,150,200,0.25)">Cloud + RPA</span>
+      </div>
+      <div class="stack-row">
+        <div class="stack-dot" style="background:#48cae4;box-shadow:0 0 8px rgba(0,188,242,0.5)"></div>
+        <div class="stack-name">Power Pages</div>
+        <span class="stack-badge" style="background:rgba(0,188,242,0.08);color:#48cae4;border:1px solid rgba(0,188,242,0.25)">Portals</span>
+      </div>
+      <div class="stack-row">
+        <div class="stack-dot" style="background:#52f0a0;box-shadow:0 0 8px rgba(0,255,140,0.5)"></div>
+        <div class="stack-name">Power BI</div>
+        <span class="stack-badge" style="background:rgba(0,255,140,0.06);color:#52f0a0;border:1px solid rgba(0,255,140,0.2)">Analytics</span>
+      </div>
+      <div class="stack-row">
+        <div class="stack-dot" style="background:#b09de8;box-shadow:0 0 8px rgba(135,100,184,0.5)"></div>
+        <div class="stack-name">Copilot Studio</div>
+        <span class="stack-badge" style="background:rgba(135,100,184,0.08);color:#b09de8;border:1px solid rgba(135,100,184,0.25)">AI Agents</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    &copy; 2026 Anwar Ul Haq &nbsp;·&nbsp; Senior Dynamics 365 &amp; Power Platform Consultant &nbsp;·&nbsp; MCID: 991520706
-  </footer>
+<!-- ─── EXPERIENCE ────────────────────────────────── -->
+<div id="experience-section" class="section">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Career</p>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="exp-timeline">
 
-</main>
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <h3 class="exp-role">Senior Dynamics CRM &amp; Power Platform Consultant</h3>
+          <span class="exp-period">Oct 2025 — Present</span>
+        </div>
+        <div class="exp-company">Hassad Food — Qatar's National Food Security Company · Doha, Qatar</div>
+        <ul class="exp-bullets">
+          <li>Maintain and extend <strong>Raqmana</strong>, Qatar's public-sector agriculture digitalization platform built on Dynamics 365 and Power Platform.</li>
+          <li>Delivered a <strong>machinery booking module</strong> enabling farmers and agri-businesses to reserve government equipment, replacing a manual scheduling process.</li>
+          <li>Built an <strong>AI-powered plant disease detection</strong> feature integrating Azure AI Services with Dynamics CRM — field workers identify crop diseases via image upload inside the platform.</li>
+          <li>Developed a <strong>Trader Support Portal</strong> allowing suppliers to apply for government reimbursements online, streamlining subsidy claims for the agriculture supply chain.</li>
+          <li>Built a <strong>feedback module</strong> capturing user satisfaction data to drive continuous improvement of platform services.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <h3 class="exp-role">Team Lead — Dynamics CRM &amp; Power Platform</h3>
+          <span class="exp-period">Jun 2023 — Sep 2025</span>
+        </div>
+        <div class="exp-company">Applab · Doha, Qatar</div>
+        <ul class="exp-bullets">
+          <li>Led a <strong>team of 14</strong> developers and consultants delivering Dynamics 365 and Power Platform solutions for Qatari government agencies.</li>
+          <li><strong>Qatar Collaboration Hub (QCH) – MCIT:</strong> Architected a public-sector service request platform on Dynamics CRM, Power Pages, Azure App Service, and Azure AI Services with multi-stage approval workflows and a circular management module.</li>
+          <li><strong>Watad E-Consultation – MSDF:</strong> Built a multi-channel consultation platform (face-to-face, Microsoft Teams, phone) with Angular frontend and Dynamics CRM backend, including social worker coordination and consultant scheduling.</li>
+          <li><strong>IPA Qatar:</strong> Developed Incentives and Investment Relations modules with automated workflows, Power Pages customizations, custom Web APIs, and government entity data-exchange integrations.</li>
+          <li>Consistently met or beat delivery timelines; enforced security and data-protection compliance across all government Power Pages portals.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <h3 class="exp-role">Dynamics 365 CE / CRM Consultant</h3>
+          <span class="exp-period">Feb 2020 — Apr 2023</span>
+        </div>
+        <div class="exp-company">Skysoft Connections · Islamabad, Pakistan</div>
+        <ul class="exp-bullets">
+          <li>Delivered <strong>10+ CRM implementations</strong> across banking, healthcare, automotive, and retail clients in Pakistan and the Middle East.</li>
+          <li>Integrated Dynamics CRM with <strong>WhatsApp Cloud API</strong>, <strong>DocuSign</strong>, <strong>OneSignal</strong>, <strong>MS Bookings</strong>, and <strong>7Pace Time Tracker</strong> via custom Power Automate connectors and webhooks.</li>
+          <li>Extended <strong>Auto Mercado CRM</strong> across multiple business units with custom plugins, web resources, SSRS reports, and SMS/push notification pipelines.</li>
+          <li>Built <strong>SSIS data migration pipelines</strong> and <strong>SSRS report suites</strong>; developed Canvas Apps to replace manual business processes.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── CERTIFICATIONS ────────────────────────────── -->
+<div id="certifications-section" class="section">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Microsoft Credentials</p>
+    <h2 class="section-title">10 Active Certifications</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="cert-grid">
+    <a class="cert-card reveal" href="https://www.credly.com/badges/78a8b26a-dd74-43ef-bd96-7ecd021739c3/public_url" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-expert">PL<br>600</div>
+      <div class="cert-code">PL-600</div>
+      <div class="cert-name">Solution Architect Expert</div>
+    </a>
+    <a class="cert-card reveal" href="https://www.credly.com/badges/eb6cacc7-6c3c-4b9c-b405-b4c8c005f5c2/public_url" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-pl">PL<br>400</div>
+      <div class="cert-code">PL-400</div>
+      <div class="cert-name">PP Developer Associate</div>
+    </a>
+    <a class="cert-card reveal" href="https://www.credly.com/badges/279a44bb-0ad6-4f81-ba51-2e2362141e4e/public_url" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-pl">PL<br>500</div>
+      <div class="cert-code">PL-500</div>
+      <div class="cert-name">RPA Developer Associate</div>
+    </a>
+    <a class="cert-card reveal" href="https://www.credly.com/badges/5bd5d9ca-aab5-4415-b871-2f519575bcd5" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-pl">PL<br>200</div>
+      <div class="cert-code">PL-200</div>
+      <div class="cert-name">Functional Consultant Assoc.</div>
+    </a>
+    <a class="cert-card reveal" href="https://www.credly.com/badges/3cb064a9-be82-44a0-8586-70049d59ede4/public_url" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-pl">PL<br>100</div>
+      <div class="cert-code">PL-100</div>
+      <div class="cert-name">App Maker Associate</div>
+    </a>
+    <a class="cert-card reveal" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-mb">MB<br>280</div>
+      <div class="cert-code">MB-280</div>
+      <div class="cert-name">Customer Experience Analyst</div>
+    </a>
+    <a class="cert-card reveal" href="https://www.credly.com/badges/3856fa11-0950-4137-8507-01ad039fb6fe/public_url" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-mb">MB<br>240</div>
+      <div class="cert-code">MB-240</div>
+      <div class="cert-name">Field Service Consultant</div>
+    </a>
+    <a class="cert-card reveal" href="https://learn.microsoft.com/en-gb/users/anwarluck/credentials/964797F5B5DD759C" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-mb">MB<br>230</div>
+      <div class="cert-code">MB-230</div>
+      <div class="cert-name">Customer Service Consultant</div>
+    </a>
+    <a class="cert-card reveal" href="https://www.credly.com/badges/1b6c8445-63c1-4b35-9c32-33d85e2c9c91/public_url" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-mb">MB<br>220</div>
+      <div class="cert-code">MB-220</div>
+      <div class="cert-name">Marketing Consultant</div>
+    </a>
+    <a class="cert-card reveal" href="https://www.credly.com/badges/6ca9f63f-a52e-4802-b6fc-d36a7c9f1577/public_url" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-mb">MB<br>210</div>
+      <div class="cert-code">MB-210</div>
+      <div class="cert-name">Sales Functional Consultant</div>
+    </a>
+  </div>
+</div>
+
+<!-- ─── SKILLS ─────────────────────────────────────── -->
+<div id="skills-section" class="section">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Technical Expertise</p>
+    <h2 class="section-title">Skills &amp; Technologies</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group-card reveal">
+      <div class="skill-group-label" style="color:var(--purple)">// Dynamics 365 / Dataverse</div>
+      <div class="skill-tags">
+        <span class="s-tag tag-p">Dynamics 365 CE</span>
+        <span class="s-tag tag-p">Sales</span>
+        <span class="s-tag tag-p">Customer Service</span>
+        <span class="s-tag tag-p">Field Service</span>
+        <span class="s-tag tag-p">Project Operations</span>
+        <span class="s-tag tag-p">Customer Insights</span>
+        <span class="s-tag tag-p">Dataverse</span>
+        <span class="s-tag tag-p">Plugin Development</span>
+        <span class="s-tag tag-p">Custom Actions</span>
+        <span class="s-tag tag-p">Business Process Flows</span>
+        <span class="s-tag tag-p">Security Roles</span>
+        <span class="s-tag tag-p">PCF Controls</span>
+      </div>
+    </div>
+    <div class="skill-group-card reveal">
+      <div class="skill-group-label" style="color:var(--cyan)">// Power Platform</div>
+      <div class="skill-tags">
+        <span class="s-tag tag-b">Power Apps Canvas</span>
+        <span class="s-tag tag-b">Model-Driven Apps</span>
+        <span class="s-tag tag-b">Power Pages</span>
+        <span class="s-tag tag-b">Power Automate</span>
+        <span class="s-tag tag-b">Power BI</span>
+        <span class="s-tag tag-b">Power Automate RPA</span>
+        <span class="s-tag tag-b">Copilot Studio</span>
+        <span class="s-tag tag-b">MCP for Dynamics CRM</span>
+      </div>
+    </div>
+    <div class="skill-group-card reveal">
+      <div class="skill-group-label" style="color:var(--green)">// Development</div>
+      <div class="skill-tags">
+        <span class="s-tag tag-t">C# / .NET</span>
+        <span class="s-tag tag-t">JavaScript</span>
+        <span class="s-tag tag-t">SQL</span>
+        <span class="s-tag tag-t">SSIS</span>
+        <span class="s-tag tag-t">Dynamics SDK</span>
+        <span class="s-tag tag-t">Web API (REST)</span>
+        <span class="s-tag tag-t">SSRS</span>
+        <span class="s-tag tag-t">Azure Logic Apps</span>
+        <span class="s-tag tag-t">Azure Functions</span>
+        <span class="s-tag tag-t">Azure AI Services</span>
+        <span class="s-tag tag-t">Angular (integration)</span>
+      </div>
+    </div>
+    <div class="skill-group-card reveal">
+      <div class="skill-group-label" style="color:var(--amber)">// Integration &amp; Tools</div>
+      <div class="skill-tags">
+        <span class="s-tag tag-o">Microsoft Teams</span>
+        <span class="s-tag tag-o">DocuSign</span>
+        <span class="s-tag tag-o">WhatsApp Cloud API</span>
+        <span class="s-tag tag-o">OneSignal</span>
+        <span class="s-tag tag-o">7Pace</span>
+        <span class="s-tag tag-o">MS Bookings</span>
+        <span class="s-tag tag-o">XrmToolBox</span>
+        <span class="s-tag tag-o">Postman</span>
+        <span class="s-tag tag-o">SSMS</span>
+        <span class="s-tag tag-o">Visual Studio 2022</span>
+        <span class="s-tag tag-o">VS Code</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CONTACT ───────────────────────────────────── -->
+<div id="contact-section">
+  <div class="contact-wrap reveal">
+    <p class="section-eyebrow" style="justify-content:center;display:flex">Let's Build Something</p>
+    <h2 class="contact-title">Available for Opportunities</h2>
+    <p class="contact-subtitle">Open to senior consulting roles, solution architecture engagements,<br>and enterprise D365/Power Platform projects across the GCC region.</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:anwarluck@outlook.com">anwarluck@outlook.com</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +974 7134 2346
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Doha, Qatar
+      </div>
+    </div>
+    <div class="social-links">
+      <a class="social-link" href="https://www.linkedin.com/in/anwarluck/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="social-link" href="https://github.com/anwarluck" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a class="social-link" href="https://www.fiverr.com/share/jpk30a" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-1.33c-.56 0-.84.41-.84 1.23v3.4h-1.44v-4.63h-.87c-.56 0-.84.41-.84 1.23v3.4h-1.44v-6.29h1.44v.69c.28-.53.76-.69 1.23-.69h1.48v.69c.28-.53.76-.69 1.23-.69h1.38v2.66zm-9.75-3.63c.5 0 .97.2 1.33.55L12 10c-.28-.27-.6-.42-.97-.42-.81 0-1.42.72-1.42 1.68s.61 1.68 1.42 1.68c.38 0 .7-.14.97-.42l1.6 1.2c-.37.34-.84.55-1.33.55-1.67 0-3.02-1.35-3.02-3.01s1.35-3.01 3.02-3.01zm-4.88 3.01c0-1.66 1.35-3.01 3.01-3.01.9 0 1.72.4 2.28 1.04l-1.5 1.13c-.21-.33-.55-.52-.95-.52-.68 0-1.2.6-1.2 1.36s.52 1.36 1.2 1.36c.4 0 .74-.19.95-.52l1.5 1.13a3.002 3.002 0 0 1-2.28 1.04c-1.66 0-3.01-1.35-3.01-3.01zM0 14.51c0 .55.5 1.02 1.1 1.02h5.44v-1.6H1.68v-2.06h4.19v-1.6H1.68V9.18H6.5V7.58H1.1C.5 7.58 0 8.05 0 8.6v5.91z"/></svg>
+        Fiverr
+      </a>
+      <a class="social-link" href="https://instagram.com/anwarluck" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <span>© 2025 Anwar Ul Haq · MCID: 991520706</span>
+  <span>Built with Three.js · GSAP · Lenis</span>
+  <span><a href="https://anwarluck.github.io">anwarluck.github.io</a></span>
+</footer>
+
+<!-- ─── SCRIPTS ───────────────────────────────────── -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 
 <script>
-  /* ── Sidebar mobile toggle ── */
-  document.getElementById('sidebarToggle').addEventListener('click', function () {
-    document.getElementById('sidebar').classList.toggle('open');
-  });
-  document.querySelectorAll('.nav-item').forEach(function (el) {
-    el.addEventListener('click', function () {
-      if (window.innerWidth < 860) document.getElementById('sidebar').classList.remove('open');
-    });
-  });
+/* ── Lenis smooth scroll ────────────────────── */
+let lenis;
+try {
+  lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  function rafLoop(time) { lenis.raf(time); requestAnimationFrame(rafLoop); }
+  requestAnimationFrame(rafLoop);
+} catch(e) { /* fallback to native scroll */ }
 
-  /* ── Scroll-fade observer ── */
-  var fiObs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('show'); fiObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-  document.querySelectorAll('.fi').forEach(function (el) { fiObs.observe(el); });
+/* ── GSAP + ScrollTrigger ───────────────────── */
+gsap.registerPlugin(ScrollTrigger);
 
-  /* ── Active nav on scroll ── */
-  var sectionIds = ['hero','summary','experience','skills','certifications','education','contact'];
-  var navMap = {};
-  sectionIds.forEach(function (id) { navMap[id] = document.querySelector('.nav-item[href="#' + id + '"]'); });
-  var secObs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting && navMap[e.target.id]) {
-        document.querySelectorAll('.nav-item').forEach(function (n) { n.classList.remove('active'); });
-        navMap[e.target.id].classList.add('active');
-      }
-    });
-  }, { threshold: 0.35 });
-  sectionIds.forEach(function (id) { var s = document.getElementById(id); if (s) secObs.observe(s); });
+if (lenis) {
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(time => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
 
-  /* ── Counter animation ── */
-  function runCounters() {
-    document.querySelectorAll('.counter').forEach(function (el) {
-      var target = parseInt(el.getAttribute('data-to'), 10);
-      var duration = 1100;
-      var step = target / (duration / 16);
-      var cur = 0;
-      var t = setInterval(function () {
-        cur += step;
-        if (cur >= target) { cur = target; clearInterval(t); }
-        el.textContent = Math.floor(cur);
-      }, 16);
-    });
+/* ── Three.js Hero Canvas ───────────────────── */
+(function initThreeJS() {
+  const canvas  = document.getElementById('hero-canvas');
+  const heroEl  = document.getElementById('hero');
+  if (!canvas || !window.THREE) return;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 2000);
+  camera.position.z = 400;
+
+  /* Particles */
+  const COUNT = 180;
+  const pos   = new Float32Array(COUNT * 3);
+  const col   = new Float32Array(COUNT * 3);
+  const cCyan = new THREE.Color(0x00d4ff);
+  const cPurp = new THREE.Color(0x9d00ff);
+  const cGrn  = new THREE.Color(0x00ff8c);
+  const palette = [cCyan, cPurp, cGrn];
+
+  for (let i = 0; i < COUNT; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * 900;
+    pos[i*3+1] = (Math.random() - 0.5) * 700;
+    pos[i*3+2] = (Math.random() - 0.5) * 500;
+    const c = palette[Math.floor(Math.random() * palette.length)];
+    col[i*3]   = c.r; col[i*3+1] = c.g; col[i*3+2] = c.b;
   }
-  var kpiDone = false;
-  var kpiObs = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting && !kpiDone) { kpiDone = true; runCounters(); }
-  }, { threshold: 0.5 });
-  kpiObs.observe(document.querySelector('.kpi-strip'));
-</script>
 
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
+  const mat = new THREE.PointsMaterial({
+    size: 2.5, vertexColors: true, transparent: true, opacity: 0.65, sizeAttenuation: true
+  });
+  const points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  /* Wireframe torus knot */
+  const tkGeo = new THREE.TorusKnotGeometry(90, 22, 120, 16);
+  const tkMat = new THREE.MeshBasicMaterial({ color: 0x00d4ff, wireframe: true, transparent: true, opacity: 0.06 });
+  const tk = new THREE.Mesh(tkGeo, tkMat);
+  tk.position.set(220, -40, -80);
+  scene.add(tk);
+
+  /* Wireframe icosahedron */
+  const icGeo = new THREE.IcosahedronGeometry(70, 1);
+  const icMat = new THREE.MeshBasicMaterial({ color: 0x9d00ff, wireframe: true, transparent: true, opacity: 0.09 });
+  const ic = new THREE.Mesh(icGeo, icMat);
+  ic.position.set(-220, 60, -60);
+  scene.add(ic);
+
+  /* Resize */
+  function resize() {
+    const w = heroEl.clientWidth, h = heroEl.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* Mouse parallax */
+  let mx = 0, my = 0;
+  heroEl.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth  - 0.5) * 2;
+    my = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  /* Animation loop */
+  (function loop() {
+    points.rotation.y += 0.0008;
+    points.rotation.x += 0.0004;
+    tk.rotation.x += 0.004; tk.rotation.y += 0.005;
+    ic.rotation.x -= 0.006; ic.rotation.z += 0.004;
+    camera.position.x += (mx * 25 - camera.position.x) * 0.025;
+    camera.position.y += (-my * 18 - camera.position.y) * 0.025;
+    camera.lookAt(scene.position);
+    renderer.render(scene, camera);
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ── Nav show/hide ──────────────────────────── */
+const nav = document.getElementById('main-nav');
+const heroHeight = () => document.getElementById('hero').offsetHeight;
+ScrollTrigger.create({
+  start: () => heroHeight() * 0.6 + ' top',
+  onEnter:     () => nav.classList.add('show'),
+  onLeaveBack: () => nav.classList.remove('show'),
+});
+
+/* ── Hero entrance animations ───────────────── */
+const heroTL = gsap.timeline({ delay: 0.2 });
+heroTL
+  .from('#h-mcid',   { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' })
+  .from('#h-avatar', { scale: 0.8, opacity: 0, duration: 0.7, ease: 'back.out(1.7)' }, '-=0.3')
+  .from('#h-name',   { y: 40, opacity: 0, duration: 0.9, ease: 'power3.out' }, '-=0.4')
+  .from('#h-role',   { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+  .from('#h-pills .hero-pill', { y: 20, opacity: 0, duration: 0.5, ease: 'power2.out', stagger: 0.08 }, '-=0.4')
+  .from('#h-badge',  { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+  .from('.hero-scroll', { opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.1');
+
+/* ── Scroll reveal ──────────────────────────── */
+document.querySelectorAll('.reveal').forEach(el => {
+  gsap.fromTo(el,
+    { y: 50, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      duration: 0.9,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+    }
+  );
+});
+
+/* ── Stagger cert cards ─────────────────────── */
+gsap.fromTo('.cert-card',
+  { y: 40, opacity: 0, scale: 0.95 },
+  {
+    y: 0, opacity: 1, scale: 1,
+    duration: 0.6, ease: 'power2.out', stagger: 0.07,
+    scrollTrigger: { trigger: '.cert-grid', start: 'top 80%', once: true }
+  }
+);
+
+/* ── Stagger skill tags ─────────────────────── */
+gsap.fromTo('.s-tag',
+  { y: 20, opacity: 0 },
+  {
+    y: 0, opacity: 1,
+    duration: 0.4, ease: 'power2.out', stagger: 0.03,
+    scrollTrigger: { trigger: '.skills-grid', start: 'top 80%', once: true }
+  }
+);
+
+/* ── Counter animation ──────────────────────── */
+document.querySelectorAll('.counter').forEach(el => {
+  const target = parseInt(el.dataset.to, 10);
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.fromTo(el, { innerText: 0 }, {
+        innerText: target,
+        duration: 1.4,
+        ease: 'power2.out',
+        snap: { innerText: 1 },
+        onUpdate() { el.innerText = Math.round(parseFloat(el.innerText)); }
+      });
+    }
+  });
+});
+
+/* ── Contact wrap reveal ────────────────────── */
+gsap.fromTo('.contact-wrap',
+  { y: 60, opacity: 0, scale: 0.97 },
+  {
+    y: 0, opacity: 1, scale: 1,
+    duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: '.contact-wrap', start: 'top 80%', once: true }
+  }
+);
+</script>
 </body>
 </html>
