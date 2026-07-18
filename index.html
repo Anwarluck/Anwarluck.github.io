@@ -13,20 +13,20 @@
   <style>
     /* ─── Variables ─────────────────────────────────── */
     :root {
-      --space:   #050710;
-      --space2:  #080b1a;
-      --cyan:    #00d4ff;
-      --purple:  #9d00ff;
-      --green:   #00ff8c;
-      --amber:   #ffb400;
-      --white:   #e8f0ff;
-      --muted:   rgba(180,210,240,0.55);
-      --glass:   rgba(255,255,255,0.03);
-      --glass2:  rgba(255,255,255,0.06);
-      --border:  rgba(255,255,255,0.07);
-      --border2: rgba(255,255,255,0.12);
-      --glow-c:  rgba(0,212,255,0.15);
-      --glow-p:  rgba(157,0,255,0.15);
+      --space:   #f2f4ff;
+      --space2:  #ffffff;
+      --cyan:    #0084b4;
+      --purple:  #7b2fff;
+      --green:   #009952;
+      --amber:   #b87800;
+      --white:   #0d1127;
+      --muted:   rgba(15,25,80,0.52);
+      --glass:   rgba(255,255,255,0.80);
+      --glass2:  rgba(255,255,255,0.95);
+      --border:  rgba(0,10,80,0.09);
+      --border2: rgba(0,10,80,0.16);
+      --glow-c:  rgba(0,132,180,0.10);
+      --glow-p:  rgba(123,47,255,0.10);
       --font:    'Plus Jakarta Sans', sans-serif;
       --mono:    'JetBrains Mono', monospace;
     }
@@ -46,8 +46,8 @@
 
     /* ─── Scrollbar ─────────────────────────────────── */
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--space); }
-    ::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.3); border-radius: 2px; }
+    ::-webkit-scrollbar-track { background: #e8eaff; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,132,180,0.35); border-radius: 2px; }
 
     /* ─── Utilities ─────────────────────────────────── */
     .glass-card {
@@ -90,8 +90,9 @@
       align-items: center;
       justify-content: space-between;
       backdrop-filter: blur(24px);
-      background: rgba(5,7,16,0.85);
+      background: rgba(242,244,255,0.92);
       border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 16px rgba(0,0,80,0.06);
       transform: translateY(-100%);
       transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
     }
@@ -144,7 +145,7 @@
     .hero-glow-1 {
       position: absolute;
       width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0,132,180,0.08) 0%, transparent 70%);
       top: -100px; left: -100px;
       border-radius: 50%;
       pointer-events: none;
@@ -152,7 +153,7 @@
     .hero-glow-2 {
       position: absolute;
       width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(157,0,255,0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(123,47,255,0.07) 0%, transparent 70%);
       bottom: -50px; right: -100px;
       border-radius: 50%;
       pointer-events: none;
@@ -171,12 +172,12 @@
     .hero-mcid {
       font-family: var(--mono);
       font-size: 11px;
-      color: rgba(0,212,255,0.6);
+      color: var(--cyan);
       letter-spacing: 2px;
       padding: 6px 16px;
-      border: 1px solid rgba(0,212,255,0.2);
+      border: 1px solid rgba(0,132,180,0.25);
       border-radius: 100px;
-      background: rgba(0,212,255,0.05);
+      background: rgba(0,132,180,0.07);
     }
     .hero-avatar-wrap {
       position: relative;
@@ -186,14 +187,14 @@
       width: 120px; height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid rgba(0,212,255,0.4);
-      box-shadow: 0 0 40px rgba(0,212,255,0.25), 0 0 80px rgba(157,0,255,0.15);
+      border: 2px solid rgba(0,132,180,0.45);
+      box-shadow: 0 0 40px rgba(0,132,180,0.18), 0 0 80px rgba(123,47,255,0.10), 0 8px 32px rgba(0,0,80,0.12);
     }
     .hero-avatar-ring {
       position: absolute;
       inset: -8px;
       border-radius: 50%;
-      border: 1px solid rgba(0,212,255,0.25);
+      border: 1px solid rgba(0,132,180,0.3);
       animation: ring-pulse 3s ease-in-out infinite;
     }
     .hero-avatar-dot {
@@ -214,7 +215,7 @@
       font-weight: 800;
       line-height: 1;
       letter-spacing: -2px;
-      background: linear-gradient(135deg, var(--white) 40%, rgba(0,212,255,0.8) 100%);
+      background: linear-gradient(135deg, #0d1127 50%, #0084b4 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -247,6 +248,7 @@
       font-size: 13px;
       color: var(--muted);
       font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,80,0.06);
     }
     .hero-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
     .hero-cert-badge {
@@ -255,11 +257,12 @@
       gap: 10px;
       padding: 12px 24px;
       border-radius: 12px;
-      border: 1px solid rgba(0,212,255,0.3);
-      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,132,180,0.3);
+      background: rgba(0,132,180,0.07);
       font-size: 14px;
       font-weight: 700;
       color: var(--cyan);
+      box-shadow: 0 2px 12px rgba(0,132,180,0.1);
     }
     .hero-cert-badge svg { width: 18px; height: 18px; }
     .hero-scroll {
@@ -273,13 +276,13 @@
       gap: 8px;
       font-family: var(--mono);
       font-size: 10px;
-      color: rgba(255,255,255,0.3);
+      color: rgba(0,10,80,0.3);
       letter-spacing: 2px;
     }
     .hero-scroll-bar {
       width: 1px;
       height: 48px;
-      background: linear-gradient(to bottom, rgba(0,212,255,0.5), transparent);
+      background: linear-gradient(to bottom, rgba(0,132,180,0.5), transparent);
       animation: scroll-drop 1.8s ease-in-out infinite;
     }
     @keyframes scroll-drop {
@@ -305,11 +308,13 @@
       border-radius: 16px;
       border: 1px solid var(--border);
       background: var(--glass);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 16px rgba(0,0,80,0.06);
       position: relative;
       overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
-    .stat-card:hover { transform: translateY(-4px); }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,80,0.1); }
     .stat-card::before {
       content: '';
       position: absolute;
@@ -371,6 +376,7 @@
       border-radius: 20px;
       border: 1px solid var(--border);
       background: var(--glass);
+      box-shadow: 0 2px 20px rgba(0,0,80,0.06);
     }
     .about-summary p {
       font-size: 16px;
@@ -402,6 +408,7 @@
       border-radius: 20px;
       border: 1px solid var(--border);
       background: var(--glass);
+      box-shadow: 0 2px 20px rgba(0,0,80,0.06);
     }
     .stack-panel-title {
       font-family: var(--mono);
@@ -497,10 +504,13 @@
       border-radius: 20px;
       border: 1px solid var(--border);
       background: var(--glass);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0,0,80,0.06);
       position: relative;
       overflow: hidden;
-      transition: border-color 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
+    .exp-card:hover { box-shadow: 0 8px 40px rgba(0,0,80,0.1); }
     .exp-item:nth-child(1) .exp-card:hover { border-color: rgba(157,0,255,0.25); }
     .exp-item:nth-child(2) .exp-card:hover { border-color: rgba(0,212,255,0.25); }
     .exp-item:nth-child(3) .exp-card:hover { border-color: rgba(0,255,140,0.2); }
@@ -532,7 +542,7 @@
       font-size: 11px;
       padding: 5px 12px;
       border-radius: 6px;
-      background: var(--glass2);
+      background: rgba(0,10,80,0.04);
       border: 1px solid var(--border);
       color: var(--muted);
       white-space: nowrap;
@@ -580,7 +590,8 @@
       padding: 20px 16px;
       border-radius: 16px;
       border: 1px solid var(--border);
-      background: var(--glass);
+      background: var(--glass2);
+      box-shadow: 0 2px 12px rgba(0,0,80,0.06);
       text-align: center;
       transition: all 0.3s;
       cursor: pointer;
@@ -590,7 +601,7 @@
     .cert-card:hover {
       transform: translateY(-6px);
       border-color: var(--border2);
-      background: var(--glass2);
+      box-shadow: 0 8px 28px rgba(0,0,80,0.11);
     }
     .cert-badge-wrap {
       width: 52px; height: 52px;
@@ -631,7 +642,8 @@
       padding: 32px;
       border-radius: 20px;
       border: 1px solid var(--border);
-      background: var(--glass);
+      background: var(--glass2);
+      box-shadow: 0 2px 16px rgba(0,0,80,0.06);
     }
     .skill-group-label {
       font-family: var(--mono);
@@ -675,7 +687,8 @@
       padding: 60px;
       border-radius: 24px;
       border: 1px solid var(--border2);
-      background: linear-gradient(135deg, rgba(157,0,255,0.08), rgba(0,212,255,0.05));
+      background: linear-gradient(135deg, rgba(123,47,255,0.05), rgba(0,132,180,0.04));
+      box-shadow: 0 4px 40px rgba(0,0,80,0.08);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -691,7 +704,7 @@
       font-size: clamp(32px, 5vw, 52px);
       font-weight: 800;
       margin-bottom: 16px;
-      background: linear-gradient(135deg, var(--white), var(--cyan));
+      background: linear-gradient(135deg, #0d1127 50%, #0084b4 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -716,7 +729,8 @@
       padding: 12px 20px;
       border-radius: 12px;
       border: 1px solid var(--border);
-      background: var(--glass);
+      background: var(--glass2);
+      box-shadow: 0 2px 8px rgba(0,0,80,0.05);
       font-size: 14px;
       color: var(--muted);
     }
@@ -758,9 +772,9 @@
       justify-content: space-between;
       font-family: var(--mono);
       font-size: 12px;
-      color: rgba(255,255,255,0.2);
+      color: rgba(0,10,80,0.3);
     }
-    footer a { color: rgba(0,212,255,0.5); }
+    footer a { color: rgba(0,132,180,0.6); }
     footer a:hover { color: var(--cyan); }
 
     /* ─── BG GRID OVERLAY ───────────────────────────── */
@@ -770,8 +784,8 @@
       z-index: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+        linear-gradient(rgba(0,10,80,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,10,80,0.04) 1px, transparent 1px);
       background-size: 60px 60px;
     }
 
@@ -1236,9 +1250,9 @@ if (lenis) {
   const COUNT = 180;
   const pos   = new Float32Array(COUNT * 3);
   const col   = new Float32Array(COUNT * 3);
-  const cCyan = new THREE.Color(0x00d4ff);
-  const cPurp = new THREE.Color(0x9d00ff);
-  const cGrn  = new THREE.Color(0x00ff8c);
+  const cCyan = new THREE.Color(0x0077aa);
+  const cPurp = new THREE.Color(0x7722dd);
+  const cGrn  = new THREE.Color(0x009955);
   const palette = [cCyan, cPurp, cGrn];
 
   for (let i = 0; i < COUNT; i++) {
@@ -1253,21 +1267,21 @@ if (lenis) {
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
   const mat = new THREE.PointsMaterial({
-    size: 2.5, vertexColors: true, transparent: true, opacity: 0.65, sizeAttenuation: true
+    size: 2.5, vertexColors: true, transparent: true, opacity: 0.55, sizeAttenuation: true
   });
   const points = new THREE.Points(geo, mat);
   scene.add(points);
 
   /* Wireframe torus knot */
   const tkGeo = new THREE.TorusKnotGeometry(90, 22, 120, 16);
-  const tkMat = new THREE.MeshBasicMaterial({ color: 0x00d4ff, wireframe: true, transparent: true, opacity: 0.06 });
+  const tkMat = new THREE.MeshBasicMaterial({ color: 0x0077aa, wireframe: true, transparent: true, opacity: 0.12 });
   const tk = new THREE.Mesh(tkGeo, tkMat);
   tk.position.set(220, -40, -80);
   scene.add(tk);
 
   /* Wireframe icosahedron */
   const icGeo = new THREE.IcosahedronGeometry(70, 1);
-  const icMat = new THREE.MeshBasicMaterial({ color: 0x9d00ff, wireframe: true, transparent: true, opacity: 0.09 });
+  const icMat = new THREE.MeshBasicMaterial({ color: 0x7722dd, wireframe: true, transparent: true, opacity: 0.14 });
   const ic = new THREE.Mesh(icGeo, icMat);
   ic.position.set(-220, 60, -60);
   scene.add(ic);
