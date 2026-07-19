@@ -11,6 +11,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    /*
+     * ╔══════════════════════════════════════════════════╗
+     * ║  Design & Code © 2026 Anwar Ul Haq              ║
+     * ║  https://anwarluck.github.io                     ║
+     * ║  All rights reserved. Unauthorised reproduction  ║
+     * ║  or redistribution is strictly prohibited.       ║
+     * ╚══════════════════════════════════════════════════╝
+     */
+
     /* ─── Variables ─────────────────────────────────── */
     :root {
       --space:   #f2f4ff;
@@ -42,7 +51,18 @@
       -webkit-font-smoothing: antialiased;
     }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    img { max-width: 100%; display: block; -webkit-user-drag: none; user-drag: none; pointer-events: none; }
+    a img { pointer-events: auto; }
+
+    /* ─── Copy / select protection ──────────────────── */
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    ::selection { background: transparent; color: inherit; }
+    ::-moz-selection { background: transparent; color: inherit; }
 
     /* ─── Scrollbar ─────────────────────────────────── */
     ::-webkit-scrollbar { width: 4px; }
@@ -1381,6 +1401,28 @@ gsap.fromTo('.s-tag',
     scrollTrigger: { trigger: '.skills-grid', start: 'top 80%', once: true }
   }
 );
+
+/* ── Content protection ─────────────────────── */
+// Disable right-click
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Disable drag on images
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('dragstart', e => e.preventDefault());
+});
+
+// Block common keyboard shortcuts (Ctrl/Cmd+S, Ctrl/Cmd+U, Ctrl/Cmd+A,
+// F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C)
+document.addEventListener('keydown', e => {
+  const ctrl = e.ctrlKey || e.metaKey;
+  if (
+    (ctrl && ['s','u','a','p'].includes(e.key.toLowerCase())) ||
+    (ctrl && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase())) ||
+    e.key === 'F12'
+  ) {
+    e.preventDefault();
+  }
+});
 
 /* ── Counter animation ──────────────────────── */
 document.querySelectorAll('.counter').forEach(el => {
