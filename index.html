@@ -137,10 +137,12 @@
       overflow: hidden;
     }
     #hero-canvas {
-      position: absolute;
+      position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
     }
     .hero-glow-1 {
       position: absolute;
@@ -181,14 +183,14 @@
     }
     .hero-avatar-wrap {
       position: relative;
-      width: 120px; height: 120px;
+      width: 160px; height: 160px;
     }
     .hero-avatar {
-      width: 120px; height: 120px;
+      width: 160px; height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid rgba(0,132,180,0.45);
-      box-shadow: 0 0 40px rgba(0,132,180,0.18), 0 0 80px rgba(123,47,255,0.10), 0 8px 32px rgba(0,0,80,0.12);
+      border: 3px solid rgba(0,132,180,0.45);
+      box-shadow: 0 0 48px rgba(0,132,180,0.18), 0 0 90px rgba(123,47,255,0.10), 0 10px 36px rgba(0,0,80,0.12);
     }
     .hero-avatar-ring {
       position: absolute;
@@ -563,17 +565,19 @@
       gap: 10px;
     }
     .exp-bullets li {
-      display: flex;
-      gap: 12px;
+      position: relative;
+      padding-left: 18px;
       font-size: 14px;
-      line-height: 1.65;
+      line-height: 1.7;
       color: var(--muted);
     }
     .exp-bullets li::before {
       content: '▸';
-      flex-shrink: 0;
-      margin-top: 2px;
+      position: absolute;
+      left: 0;
+      top: 4px;
       font-size: 10px;
+      line-height: 1;
     }
     .exp-item:nth-child(1) .exp-bullets li::before { color: var(--purple); }
     .exp-item:nth-child(2) .exp-bullets li::before { color: var(--cyan); }
@@ -672,10 +676,10 @@
     .tag-p:hover { background: rgba(157,0,255,0.15); border-color: rgba(157,0,255,0.5); }
     .tag-b { color: #48cae4; border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.06); }
     .tag-b:hover { background: rgba(0,212,255,0.12); border-color: rgba(0,212,255,0.5); }
-    .tag-t { color: #52f0a0; border-color: rgba(0,255,140,0.25); background: rgba(0,255,140,0.06); }
-    .tag-t:hover { background: rgba(0,255,140,0.12); border-color: rgba(0,255,140,0.4); }
-    .tag-o { color: #ffd166; border-color: rgba(255,180,0,0.25); background: rgba(255,180,0,0.06); }
-    .tag-o:hover { background: rgba(255,180,0,0.12); border-color: rgba(255,180,0,0.4); }
+    .tag-t { color: #006f3c; border-color: rgba(0,111,60,0.25); background: rgba(0,111,60,0.07); }
+    .tag-t:hover { background: rgba(0,111,60,0.14); border-color: rgba(0,111,60,0.45); }
+    .tag-o { color: #7a4f00; border-color: rgba(122,79,0,0.25); background: rgba(122,79,0,0.07); }
+    .tag-o:hover { background: rgba(122,79,0,0.14); border-color: rgba(122,79,0,0.45); }
 
     /* ─── CONTACT ───────────────────────────────────── */
     #contact-section {
@@ -777,11 +781,20 @@
     footer a { color: rgba(0,132,180,0.6); }
     footer a:hover { color: var(--cyan); }
 
+    /* ─── PAGE CONTENT LAYERING ─────────────────────── */
+    nav, #hero .hero-content, #hero .hero-glow-1, #hero .hero-glow-2,
+    #hero .hero-scroll, #stats, #about-section, #experience-section,
+    #certifications-section, #skills-section, #contact-section, footer {
+      position: relative;
+      z-index: 2;
+    }
+    #hero { z-index: 1; }
+
     /* ─── BG GRID OVERLAY ───────────────────────────── */
     .grid-overlay {
       position: fixed;
       inset: 0;
-      z-index: 0;
+      z-index: 1;
       pointer-events: none;
       background-image:
         linear-gradient(rgba(0,10,80,0.04) 1px, transparent 1px),
@@ -1288,7 +1301,7 @@ if (lenis) {
 
   /* Resize */
   function resize() {
-    const w = heroEl.clientWidth, h = heroEl.clientHeight;
+    const w = window.innerWidth, h = window.innerHeight;
     renderer.setSize(w, h);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
@@ -1298,7 +1311,7 @@ if (lenis) {
 
   /* Mouse parallax */
   let mx = 0, my = 0;
-  heroEl.addEventListener('mousemove', e => {
+  window.addEventListener('mousemove', e => {
     mx = (e.clientX / window.innerWidth  - 0.5) * 2;
     my = (e.clientY / window.innerHeight - 0.5) * 2;
   });
