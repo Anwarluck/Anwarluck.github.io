@@ -782,13 +782,13 @@
     footer a:hover { color: var(--cyan); }
 
     /* ─── PAGE CONTENT LAYERING ─────────────────────── */
-    nav, #hero .hero-content, #hero .hero-glow-1, #hero .hero-glow-2,
-    #hero .hero-scroll, #stats, #about-section, #experience-section,
+    #hero { position: relative; z-index: 1; }
+    .hero-content { z-index: 2; }
+    nav, #stats, #about-section, #experience-section,
     #certifications-section, #skills-section, #contact-section, footer {
       position: relative;
       z-index: 2;
     }
-    #hero { z-index: 1; }
 
     /* ─── BG GRID OVERLAY ───────────────────────────── */
     .grid-overlay {
@@ -1219,7 +1219,6 @@
 <!-- ─── FOOTER ─────────────────────────────────────── -->
 <footer>
   <span>© 2025 Anwar Ul Haq · MCID: 991520706</span>
-  <span>Built with Three.js · GSAP · Lenis</span>
   <span><a href="https://anwarluck.github.io">anwarluck.github.io</a></span>
 </footer>
 
