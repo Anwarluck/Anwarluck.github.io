@@ -237,7 +237,7 @@
       font-weight: 800;
       line-height: 1;
       letter-spacing: -2px;
-      background: linear-gradient(135deg, #0d1127 50%, #0084b4 100%);
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 52%, var(--green) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -958,6 +958,93 @@
       footer { flex-direction: column; gap: 8px; text-align: center; }
       .hero-name { letter-spacing: -1px; }
     }
+
+    /* ─── SCROLL PROGRESS ──────────────────────────── */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--green));
+      z-index: 9999;
+      pointer-events: none;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ─── AVAILABLE BADGE ───────────────────────────── */
+    .hero-available {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px 7px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(0,153,82,0.28);
+      background: rgba(0,153,82,0.07);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      font-family: var(--mono);
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(8px);
+    }
+    .avail-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .avail-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: var(--green);
+      opacity: 0.4;
+      animation: avail-ping 1.6s ease-out infinite;
+    }
+    @keyframes avail-ping {
+      0%   { transform: scale(1); opacity: 0.4; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+
+    /* ─── NAV ACTIVE LINK ───────────────────────────── */
+    .nav-links a.nav-active {
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    /* ─── CUSTOM CURSOR ─────────────────────────────── */
+    @media (hover: hover) and (pointer: fine) {
+      * { cursor: none !important; }
+      #cursor-dot {
+        position: fixed;
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: var(--cyan);
+        pointer-events: none;
+        z-index: 99999;
+        transform: translate(-50%, -50%);
+        transition: background 0.15s, transform 0.15s;
+        will-change: left, top;
+      }
+      #cursor-glow {
+        position: fixed;
+        width: 38px; height: 38px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(0,132,180,0.5);
+        pointer-events: none;
+        z-index: 99998;
+        transform: translate(-50%, -50%);
+        transition: width 0.25s, height 0.25s, border-color 0.25s, background 0.25s;
+        will-change: left, top;
+      }
+      #cursor-glow.cur-hover {
+        width: 56px; height: 56px;
+        border-color: var(--purple);
+        background: rgba(123,47,255,0.07);
+      }
+    }
   </style>
 </head>
 <body>
@@ -966,6 +1053,10 @@
 <div class="grid-overlay"></div>
 
 <!-- ─── NAV ──────────────────────────────────────── -->
+<div id="scroll-progress"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-glow"></div>
+
 <nav class="nav" id="main-nav">
   <div class="nav-brand">AUH // D365 &amp; PP</div>
   <ul class="nav-links">
@@ -990,6 +1081,11 @@
       <img class="hero-avatar" src="assets/images/c-1.png" alt="Anwar Ul Haq">
       <div class="hero-avatar-ring"></div>
       <div class="hero-avatar-dot"></div>
+    </div>
+
+    <div class="hero-available" id="h-avail">
+      <span class="avail-dot"></span>
+      Open to Opportunities
     </div>
 
     <h1 class="hero-name" id="h-name">Anwar Ul Haq</h1>
@@ -1781,6 +1877,64 @@ gsap.fromTo('.s-tag',
   });
 
   updateUI();
+})();
+
+/* ── Scroll Progress ────────────────────────── */
+(function() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  function update() {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    if (total > 0) bar.style.width = (scrolled / total * 100).toFixed(2) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  if (typeof lenis !== 'undefined' && lenis) lenis.on('scroll', update);
+})();
+
+/* ── Scrollspy — active nav link ─────────────── */
+(function() {
+  const sectionIds = ['about-section','experience-section','certifications-section','skills-section'];
+  const navLinks   = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach(a => {
+        a.classList.toggle('nav-active', a.getAttribute('href') === '#' + entry.target.id);
+      });
+    });
+  }, { rootMargin: '-25% 0px -55% 0px' });
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+})();
+
+/* ── Custom Cursor ───────────────────────────── */
+(function() {
+  const dot  = document.getElementById('cursor-dot');
+  const glow = document.getElementById('cursor-glow');
+  const isTouch = !matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!dot || !glow || isTouch) return;
+
+  // Dot snaps instantly; glow trails with GSAP quickTo
+  const xGlow = gsap.quickTo(glow, 'left', { duration: 0.48, ease: 'power3' });
+  const yGlow = gsap.quickTo(glow, 'top',  { duration: 0.48, ease: 'power3' });
+
+  window.addEventListener('mousemove', e => {
+    dot.style.left = e.clientX + 'px';
+    dot.style.top  = e.clientY + 'px';
+    xGlow(e.clientX);
+    yGlow(e.clientY);
+  }, { passive: true });
+
+  const hoverSel = 'a, button, .rec-btn, .hero-pill, .cert-card, .nav-cta, .hero-available, .s-tag, label';
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest(hoverSel)) glow.classList.add('cur-hover');
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest(hoverSel)) glow.classList.remove('cur-hover');
+  });
 })();
 
 /* ── Content protection ─────────────────────── */
