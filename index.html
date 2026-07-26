@@ -701,6 +701,80 @@
     .tag-o { color: #7a4f00; border-color: rgba(122,79,0,0.25); background: rgba(122,79,0,0.07); }
     .tag-o:hover { background: rgba(122,79,0,0.14); border-color: rgba(122,79,0,0.45); }
 
+    /* ─── RECOMMENDATIONS ──────────────────────────── */
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .rec-card {
+      padding: 36px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--glass2);
+      box-shadow: 0 2px 20px rgba(0,0,80,0.06);
+      position: relative;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .rec-card:hover { transform: translateY(-4px); box-shadow: 0 8px 36px rgba(0,0,80,0.1); }
+    .rec-quote-icon {
+      font-size: 56px;
+      line-height: 1;
+      color: var(--purple);
+      opacity: 0.15;
+      position: absolute;
+      top: 20px; right: 28px;
+      font-family: Georgia, serif;
+      pointer-events: none;
+    }
+    .rec-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+    .rec-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .rec-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(0,0,80,0.15);
+    }
+    .rec-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .rec-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .rec-linkedin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #0A66C2;
+      opacity: 0.7;
+    }
+    .rec-linkedin-badge svg { width: 13px; height: 13px; }
+    @media (max-width: 700px) { .rec-grid { grid-template-columns: 1fr; } }
+
     /* ─── CONTACT ───────────────────────────────────── */
     #contact-section {
       padding: 100px 40px;
@@ -805,7 +879,8 @@
     #hero { position: relative; z-index: 1; }
     .hero-content { z-index: 2; }
     nav, #stats, #about-section, #experience-section,
-    #certifications-section, #skills-section, #contact-section, footer {
+    #certifications-section, #skills-section, #recommendations-section,
+    #contact-section, footer {
       position: relative;
       z-index: 2;
     }
@@ -1197,6 +1272,54 @@
         <span class="s-tag tag-o">VS Code</span>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ─── RECOMMENDATIONS ──────────────────────────── -->
+<div id="recommendations-section" class="section">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">What People Say</p>
+    <h2 class="section-title">Recommendations</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="rec-grid">
+
+    <div class="rec-card reveal">
+      <div class="rec-quote-icon">"</div>
+      <p class="rec-text">
+        It was a pleasure working with Anwar during his time at Applab. From day one, he demonstrated strong ownership, professionalism, and an eagerness to grow. He consistently brought structure and clarity to his work, showing a deep understanding of both technical and business needs. What stood out most about Anwar was his positive attitude and ability to adapt quickly to changing priorities — qualities that made him an integral part of our team. He was reliable, collaborative, and always ready to go the extra mile to ensure the success of our projects. I have no doubt that Anwar will continue to excel and add great value wherever he goes.
+      </p>
+      <div class="rec-author">
+        <div class="rec-avatar" style="background: linear-gradient(135deg, #7b2fff, #0084b4);">AS</div>
+        <div>
+          <div class="rec-name">AlMutasim AlSammari</div>
+          <div class="rec-title">Applab · Doha, Qatar</div>
+          <span class="rec-linkedin-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            via LinkedIn
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-card reveal">
+      <div class="rec-quote-icon">"</div>
+      <p class="rec-text">
+        I had the opportunity to work with Anwar on the Invest Qatar CRM project, and it has truly been a wonderful experience. What I appreciate most about Anwar is his calm and positive approach, no matter how challenging the situation. He always takes the time to listen, understand different perspectives, and come up with solutions that keep all teams involved and comfortable. His ability to build trust and maintain good relationships made a big difference in how smoothly we were able to deliver our work. Anwar is dependable, approachable, and always willing to go the extra mile to support everyone working with him. Working with him felt more like collaborating with a friend than just a teammate.
+      </p>
+      <div class="rec-author">
+        <div class="rec-avatar" style="background: linear-gradient(135deg, #009952, #0084b4);">KK</div>
+        <div>
+          <div class="rec-name">Kavya Krishnan</div>
+          <div class="rec-title">Invest Qatar CRM Project</div>
+          <span class="rec-linkedin-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            via LinkedIn
+          </span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
