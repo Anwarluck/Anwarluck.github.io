@@ -704,55 +704,72 @@
     /* ─── ANIMATED TESTIMONIALS ─────────────────────── */
     .atest-wrap {
       display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 72px;
-      align-items: center;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
+      align-items: flex-start;
     }
     .atest-deck {
       position: relative;
-      height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: 300px;
+      flex-shrink: 0;
     }
     .atest-av {
       position: absolute;
-      width: 220px; height: 220px;
-      border-radius: 28px;
+      inset: 0;
+      margin: auto;
+      width: 200px; height: 200px;
+      border-radius: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--mono);
-      font-size: 56px;
+      font-size: 52px;
       font-weight: 800;
       color: #fff;
-      box-shadow: 0 24px 60px rgba(0,0,80,0.18);
-      transform-origin: bottom center;
+      box-shadow: 0 20px 50px rgba(0,0,80,0.22);
       will-change: transform, opacity;
       user-select: none;
     }
-    .atest-right { display: flex; flex-direction: column; }
-    .atest-meta { margin-bottom: 20px; }
-    .atest-name {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 4px;
+    .atest-right {
+      display: flex;
+      flex-direction: column;
+      padding-top: 4px;
     }
-    .atest-role { font-size: 13px; color: var(--muted); }
+    .atest-qi {
+      display: block;
+      font-size: 72px;
+      line-height: 0.75;
+      font-family: Georgia, serif;
+      color: var(--cyan);
+      opacity: 0.22;
+      margin-bottom: 14px;
+    }
     .atest-quote {
-      font-size: 14px;
-      line-height: 1.88;
+      font-size: 14.5px;
+      line-height: 1.85;
       color: var(--muted);
       font-style: italic;
-      min-height: 140px;
+      min-height: 165px;
+      margin-bottom: 28px;
     }
     .atest-word { display: inline; }
+    .atest-divider {
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+    .atest-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+    .atest-role { font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
     .rec-linkedin-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 8px;
       font-size: 11px;
       font-weight: 600;
       color: #0A66C2;
@@ -762,8 +779,8 @@
     .rec-controls {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-top: 32px;
+      gap: 14px;
+      margin-top: 20px;
     }
     .rec-btn {
       width: 44px; height: 44px;
@@ -780,7 +797,7 @@
     }
     .rec-btn:hover { background: var(--cyan); border-color: var(--cyan); color: #fff; transform: scale(1.08); }
     .rec-btn svg { width: 18px; height: 18px; }
-    .rec-dots { display: flex; gap: 7px; }
+    .rec-dots { display: flex; gap: 7px; align-items: center; }
     .rec-dot {
       width: 7px; height: 7px;
       border-radius: 50%;
@@ -790,9 +807,10 @@
     }
     .rec-dot.active { background: var(--cyan); transform: scale(1.35); }
     @media (max-width: 760px) {
-      .atest-wrap { grid-template-columns: 1fr; gap: 36px; }
-      .atest-deck { height: 200px; }
+      .atest-wrap { grid-template-columns: 1fr; gap: 32px; }
+      .atest-deck { height: 220px; }
       .atest-av { width: 160px; height: 160px; font-size: 40px; border-radius: 20px; }
+      .atest-quote { min-height: 0; }
     }
 
     /* ─── CONTACT ───────────────────────────────────── */
@@ -1041,6 +1059,7 @@
     <li><a href="#experience-section">Experience</a></li>
     <li><a href="#certifications-section">Certifications</a></li>
     <li><a href="#skills-section">Skills</a></li>
+    <li><a href="#recommendations-section">Recommendations</a></li>
   </ul>
   <a href="mailto:anwarluck@outlook.com" class="nav-cta">Hire Me</a>
 </nav>
@@ -1401,15 +1420,15 @@
   <div class="atest-wrap">
     <div class="atest-deck" id="atestDeck"></div>
     <div class="atest-right">
-      <div class="atest-meta" id="atestMeta">
-        <h3 class="atest-name" id="atestName"></h3>
-        <p class="atest-role" id="atestRole"></p>
-        <span class="rec-linkedin-badge" id="atestBadge">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          via LinkedIn
-        </span>
-      </div>
+      <span class="atest-qi">&ldquo;</span>
       <p class="atest-quote" id="atestQuote"></p>
+      <div class="atest-divider"></div>
+      <h3 class="atest-name" id="atestName"></h3>
+      <p class="atest-role" id="atestRole"></p>
+      <span class="rec-linkedin-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        via LinkedIn
+      </span>
       <div class="rec-controls">
         <button class="rec-btn" id="atestPrev" aria-label="Previous">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -1694,14 +1713,18 @@ gsap.fromTo('.s-tag',
 
   function revealText(idx) {
     const t = TDATA[idx];
-    gsap.fromTo(nameEl, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: 'power2.out', onStart() { nameEl.textContent = t.n; } });
-    gsap.fromTo(roleEl, { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: 'power2.out', delay: 0.06, onStart() { roleEl.textContent = t.r; } });
+    // Quote reveals first, word by word
     const words = t.q.split(' ');
     quoteEl.innerHTML = words.map(w => `<span class="atest-word">${w}&nbsp;</span>`).join('');
     gsap.fromTo(quoteEl.querySelectorAll('.atest-word'),
       { filter: 'blur(7px)', opacity: 0, y: 5 },
-      { filter: 'blur(0px)', opacity: 1, y: 0, duration: 0.2, stagger: 0.014, ease: 'power2.out', delay: 0.1 }
+      { filter: 'blur(0px)', opacity: 1, y: 0, duration: 0.2, stagger: 0.013, ease: 'power2.out' }
     );
+    // Name + role fade up after a short offset
+    nameEl.textContent = t.n;
+    roleEl.textContent = t.r;
+    gsap.fromTo(nameEl, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: 'power2.out', delay: 0.15 });
+    gsap.fromTo(roleEl, { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: 'power2.out', delay: 0.22 });
     dotsWrap.querySelectorAll('.rec-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
   }
 
@@ -1759,7 +1782,7 @@ gsap.fromTo('.s-tag',
 
 /* ── Scrollspy — active nav link ─────────────── */
 (function() {
-  const sectionIds = ['about-section','experience-section','certifications-section','skills-section'];
+  const sectionIds = ['about-section','experience-section','certifications-section','skills-section','recommendations-section'];
   const navLinks   = document.querySelectorAll('.nav-links a');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
