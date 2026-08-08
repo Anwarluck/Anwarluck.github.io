@@ -64,20 +64,13 @@
     ::selection { background: transparent; color: inherit; }
     ::-moz-selection { background: transparent; color: inherit; }
 
-    /* ─── Ambient cursor glow ───────────────────────── */
-    #cursor-ambient {
+    /* ─── Fluid cursor canvas ───────────────────────── */
+    #fluid-canvas {
       position: fixed;
       top: 0; left: 0;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,132,180,0.07) 0%, rgba(123,47,255,0.04) 40%, transparent 70%);
+      width: 100%; height: 100%;
       pointer-events: none;
-      z-index: 0;
-      filter: blur(48px);
-      transform: translate(-50%, -50%);
-      will-change: transform;
-      transition: opacity 0.6s;
-      opacity: 0;
+      z-index: 9999;
     }
 
     /* ─── Scrollbar ─────────────────────────────────── */
@@ -1162,7 +1155,7 @@
   </style>
 </head>
 <body>
-<div id="cursor-ambient"></div>
+<canvas id="fluid-canvas"></canvas>
 
 <!-- Background grid -->
 <div class="grid-overlay"></div>
@@ -2261,21 +2254,6 @@ document.querySelectorAll('.counter').forEach(el => {
   });
 });
 
-/* ── Ambient cursor glow ────────────────────── */
-(function () {
-  const el = document.getElementById('cursor-ambient');
-  if (!el || window.matchMedia('(pointer: coarse)').matches) return; // skip touch devices
-  const moveX = gsap.quickTo(el, 'x', { duration: 0.7, ease: 'power3.out' });
-  const moveY = gsap.quickTo(el, 'y', { duration: 0.7, ease: 'power3.out' });
-  let entered = false;
-  window.addEventListener('mousemove', e => {
-    if (!entered) { el.style.opacity = '1'; entered = true; }
-    moveX(e.clientX);
-    moveY(e.clientY);
-  }, { passive: true });
-  document.addEventListener('mouseleave', () => { el.style.opacity = '0'; entered = false; });
-})();
-
 /* ── Contact wrap reveal ────────────────────── */
 gsap.fromTo('.contact-wrap',
   { y: 60, opacity: 0, scale: 0.97 },
@@ -2286,5 +2264,6 @@ gsap.fromTo('.contact-wrap',
   }
 );
 </script>
+<script src="assets/js/fluid-cursor.js"></script>
 </body>
 </html>
