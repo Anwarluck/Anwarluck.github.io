@@ -641,7 +641,24 @@
       transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
       display: flex;
       flex-direction: column;
+      --sx: -999px; --sy: -999px;
     }
+    .proj-card[data-co="hassad"]  { --spot: rgba(0,132,180,0.14); }
+    .proj-card[data-co="applab"]  { --spot: rgba(123,47,255,0.12); }
+    .proj-card[data-co="skysoft"] { --spot: rgba(0,153,82,0.12); }
+    /* Inspira UI spotlight layer */
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.4s;
+      background: radial-gradient(360px circle at var(--sx) var(--sy), var(--spot, rgba(0,132,180,0.13)), transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .proj-card:hover::after { opacity: 1; }
     .proj-card:hover { box-shadow: 0 8px 40px rgba(0,0,80,0.1); transform: translateY(-3px); }
     .proj-card[data-co="hassad"]:hover  { border-color: rgba(0,132,180,0.3); }
     .proj-card[data-co="applab"]:hover  { border-color: rgba(123,47,255,0.3); }
@@ -654,7 +671,9 @@
     .proj-card[data-co="hassad"]  .proj-accent { background: linear-gradient(to bottom, var(--cyan), transparent); }
     .proj-card[data-co="applab"]  .proj-accent { background: linear-gradient(to bottom, var(--purple), transparent); }
     .proj-card[data-co="skysoft"] .proj-accent { background: linear-gradient(to bottom, var(--green), transparent); }
-    .proj-inner { padding: 28px 28px 28px 36px; display: flex; flex-direction: column; flex: 1; }
+    .proj-inner { padding: 28px 28px 28px 36px; display: flex; flex-direction: column; flex: 1; position: relative; z-index: 1; }
+    /* Animate UI — char wrapper for title reveal */
+    .proj-char { display: inline-block; will-change: transform, opacity; }
     .proj-head {
       display: flex;
       align-items: flex-start;
@@ -1356,7 +1375,7 @@
 
 <!-- ─── PROJECTS ──────────────────────────────────── -->
 <div id="projects-section" class="section">
-  <div class="section-header reveal">
+  <div class="section-header">
     <p class="section-eyebrow">Delivered Solutions</p>
     <h2 class="section-title">Featured Projects</h2>
     <div class="section-divider"></div>
@@ -2086,6 +2105,68 @@ gsap.fromTo('.s-tag',
           gsap.to(card, { opacity: 0, scale: 0.95, duration: 0.2, ease: 'power2.in', onComplete() { card.style.display = 'none'; } });
         }
       });
+    });
+  });
+})();
+
+/* ── Projects: Inspira spotlight ────────────── */
+document.querySelectorAll('.proj-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--sx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--sy', (e.clientY - r.top)  + 'px');
+  }, { passive: true });
+  card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--sx', '-999px');
+    card.style.setProperty('--sy', '-999px');
+  });
+});
+
+/* ── Projects: Animate UI char reveal ───────── */
+(function() {
+  const section = document.getElementById('projects-section');
+  if (!section) return;
+  const eyebrow = section.querySelector('.section-eyebrow');
+  const title   = section.querySelector('.section-title');
+
+  function splitChars(el) {
+    const text = el.textContent;
+    el.innerHTML = text.split('').map(ch =>
+      ch === ' '
+        ? ' '
+        : `<span class="proj-char" style="opacity:0;transform:translateY(22px)">${ch}</span>`
+    ).join('');
+    return el.querySelectorAll('.proj-char');
+  }
+
+  const eChars = splitChars(eyebrow);
+  const tChars = splitChars(title);
+
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top 80%',
+    once: true,
+    onEnter() {
+      gsap.to(eChars, { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power3.out' });
+      gsap.to(tChars, { opacity: 1, y: 0, duration: 0.55, stagger: 0.022, ease: 'power3.out', delay: 0.18 });
+    }
+  });
+})();
+
+/* ── Projects: Lenis-driven parallax ────────── */
+(function() {
+  const cards = document.querySelectorAll('.proj-card');
+  if (!cards.length) return;
+  cards.forEach((card, i) => {
+    gsap.to(card, {
+      y: i % 2 === 0 ? -24 : -40,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.2
+      }
     });
   });
 })();
