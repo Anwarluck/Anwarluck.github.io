@@ -638,6 +638,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
+      perspective: 1000px;
     }
     .proj-card {
       border-radius: 20px;
@@ -646,11 +647,12 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 2px 20px rgba(0,0,80,0.06);
       position: relative;
-      overflow: hidden;
-      transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+      transition: box-shadow 0.3s, border-color 0.3s;
       display: flex;
       flex-direction: column;
       --sx: -999px; --sy: -999px;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
     .proj-card[data-co="hassad"]  { --spot: rgba(0,132,180,0.14); }
     .proj-card[data-co="applab"]  { --spot: rgba(123,47,255,0.12); }
@@ -668,7 +670,7 @@
       z-index: 0;
     }
     .proj-card:hover::after { opacity: 1; }
-    .proj-card:hover { box-shadow: 0 8px 40px rgba(0,0,80,0.1); transform: translateY(-3px); }
+    .proj-card:hover { box-shadow: 0 8px 40px rgba(0,0,80,0.1); }
     .proj-card[data-co="hassad"]:hover  { border-color: rgba(0,132,180,0.3); }
     .proj-card[data-co="applab"]:hover  { border-color: rgba(123,47,255,0.3); }
     .proj-card[data-co="skysoft"]:hover { border-color: rgba(0,153,82,0.3); }
@@ -680,7 +682,11 @@
     .proj-card[data-co="hassad"]  .proj-accent { background: linear-gradient(to bottom, var(--cyan), transparent); }
     .proj-card[data-co="applab"]  .proj-accent { background: linear-gradient(to bottom, var(--purple), transparent); }
     .proj-card[data-co="skysoft"] .proj-accent { background: linear-gradient(to bottom, var(--green), transparent); }
-    .proj-inner { padding: 28px 28px 28px 36px; display: flex; flex-direction: column; flex: 1; position: relative; z-index: 1; }
+    .proj-inner { padding: 28px 28px 28px 36px; display: flex; flex-direction: column; flex: 1; position: relative; z-index: 1; transform-style: preserve-3d; }
+    .proj-head  { transform: translateZ(50px); }
+    .proj-period { transform: translateZ(15px); }
+    .proj-body  { transform: translateZ(20px); }
+    .proj-tags  { transform: translateZ(40px); }
     /* Animate UI — char wrapper for title reveal */
     .proj-char { display: inline-block; will-change: transform, opacity; }
     .proj-head {
@@ -2119,16 +2125,27 @@ gsap.fromTo('.s-tag',
   });
 })();
 
-/* ── Projects: Inspira spotlight ────────────── */
+/* ── Projects: Inspira spotlight + 3D card tilt ─ */
 document.querySelectorAll('.proj-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    gsap.to(card, { y: -6, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+  });
   card.addEventListener('mousemove', e => {
+    // Spotlight
     const r = card.getBoundingClientRect();
     card.style.setProperty('--sx', (e.clientX - r.left) + 'px');
     card.style.setProperty('--sy', (e.clientY - r.top)  + 'px');
+    // 3D tilt — CardContainer/CardBody style
+    const cx = r.left + r.width  / 2;
+    const cy = r.top  + r.height / 2;
+    const dx = (e.clientX - cx) / (r.width  / 2); // -1 → 1
+    const dy = (e.clientY - cy) / (r.height / 2); // -1 → 1
+    gsap.to(card, { rotateY: dx * 12, rotateX: -dy * 8, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
   }, { passive: true });
   card.addEventListener('mouseleave', () => {
     card.style.setProperty('--sx', '-999px');
     card.style.setProperty('--sy', '-999px');
+    gsap.to(card, { rotateX: 0, rotateY: 0, y: 0, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
   });
 });
 
