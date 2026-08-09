@@ -333,6 +333,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
+      perspective: 800px;
     }
     .stat-card {
       padding: 28px 24px;
@@ -342,10 +343,11 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 2px 16px rgba(0,0,80,0.06);
       position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
-    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,80,0.1); }
+    .stat-card:hover { box-shadow: 0 8px 32px rgba(0,0,80,0.1); }
     .stat-card::before {
       content: '';
       position: absolute;
@@ -488,6 +490,7 @@
     .exp-timeline {
       position: relative;
       padding-left: 48px;
+      perspective: 1000px;
     }
     .exp-timeline::before {
       content: '';
@@ -538,8 +541,9 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 2px 20px rgba(0,0,80,0.06);
       position: relative;
-      overflow: hidden;
       transition: border-color 0.3s, box-shadow 0.3s;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
     .exp-card:hover { box-shadow: 0 8px 40px rgba(0,0,80,0.1); }
     .exp-item:nth-child(1) .exp-card:hover { border-color: rgba(157,0,255,0.25); }
@@ -759,6 +763,7 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 16px;
+      perspective: 800px;
     }
     .cert-card {
       padding: 20px 16px;
@@ -767,13 +772,14 @@
       background: var(--glass2);
       box-shadow: 0 2px 12px rgba(0,0,80,0.06);
       text-align: center;
-      transition: all 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s;
       cursor: pointer;
       text-decoration: none;
       display: block;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
     .cert-card:hover {
-      transform: translateY(-6px);
       border-color: var(--border2);
       box-shadow: 0 8px 28px rgba(0,0,80,0.11);
     }
@@ -2125,21 +2131,19 @@ gsap.fromTo('.s-tag',
   });
 })();
 
-/* ── Projects: Inspira spotlight + 3D card tilt ─ */
+/* ── Projects: Inspira spotlight + 3D tilt ───── */
 document.querySelectorAll('.proj-card').forEach(card => {
   card.addEventListener('mouseenter', () => {
     gsap.to(card, { y: -6, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
   });
   card.addEventListener('mousemove', e => {
-    // Spotlight
-    const r = card.getBoundingClientRect();
+    const r  = card.getBoundingClientRect();
+    // Spotlight CSS vars
     card.style.setProperty('--sx', (e.clientX - r.left) + 'px');
     card.style.setProperty('--sy', (e.clientY - r.top)  + 'px');
-    // 3D tilt — CardContainer/CardBody style
-    const cx = r.left + r.width  / 2;
-    const cy = r.top  + r.height / 2;
-    const dx = (e.clientX - cx) / (r.width  / 2); // -1 → 1
-    const dy = (e.clientY - cy) / (r.height / 2); // -1 → 1
+    // 3D tilt
+    const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+    const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
     gsap.to(card, { rotateY: dx * 12, rotateX: -dy * 8, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
   }, { passive: true });
   card.addEventListener('mouseleave', () => {
@@ -2180,22 +2184,43 @@ document.querySelectorAll('.proj-card').forEach(card => {
   });
 })();
 
-/* ── Projects: Lenis-driven parallax ────────── */
+/* ── Shared 3D card tilt (all card types) ───── */
 (function() {
-  const cards = document.querySelectorAll('.proj-card');
-  if (!cards.length) return;
-  cards.forEach((card, i) => {
-    gsap.to(card, {
-      y: i % 2 === 0 ? -24 : -40,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: card,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1.2
-      }
+  function apply3DTilt(selector) {
+    document.querySelectorAll(selector).forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, { y: -6, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+      });
+      card.addEventListener('mousemove', e => {
+        const r  = card.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+        const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+        gsap.to(card, { rotateY: dx * 10, rotateX: -dy * 6, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+      }, { passive: true });
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, { rotateX: 0, rotateY: 0, y: 0, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
+      });
     });
-  });
+  }
+  apply3DTilt('.exp-card');
+  apply3DTilt('.cert-card');
+  apply3DTilt('.stat-card');
+})();
+
+/* ── Lenis-driven parallax (proj + exp + cert) ─ */
+(function() {
+  function applyParallax(selector, depths) {
+    document.querySelectorAll(selector).forEach((card, i) => {
+      gsap.to(card, {
+        y: depths[i % depths.length],
+        ease: 'none',
+        scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 1.2 }
+      });
+    });
+  }
+  applyParallax('.proj-card', [-24, -40]);
+  applyParallax('.exp-card',  [-16, -28, -12]);
+  applyParallax('.cert-card', [-10, -18, -12, -20, -8]);
 })();
 
 /* ── Scroll Progress ────────────────────────── */
@@ -2281,6 +2306,6 @@ gsap.fromTo('.contact-wrap',
   }
 );
 </script>
-<script src="assets/js/fluid-cursor.js"></script>
+<!-- <script src="assets/js/fluid-cursor.js"></script> -->
 </body>
 </html>
