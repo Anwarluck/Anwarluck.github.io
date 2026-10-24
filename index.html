@@ -340,8 +340,7 @@
       padding: 28px 24px;
       border-radius: 16px;
       border: 1px solid var(--border);
-      background: var(--glass);
-      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.9);
       box-shadow: 0 2px 16px rgba(0,0,80,0.06);
       position: relative;
       transition: border-color 0.3s, box-shadow 0.3s;
@@ -538,8 +537,7 @@
       padding: 36px;
       border-radius: 20px;
       border: 1px solid var(--border);
-      background: var(--glass);
-      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.9);
       box-shadow: 0 2px 20px rgba(0,0,80,0.06);
       position: relative;
       transition: border-color 0.3s, box-shadow 0.3s;
@@ -648,8 +646,7 @@
     .proj-card {
       border-radius: 20px;
       border: 1px solid var(--border);
-      background: var(--glass);
-      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.9);
       box-shadow: 0 2px 20px rgba(0,0,80,0.06);
       position: relative;
       transition: box-shadow 0.3s, border-color 0.3s;
@@ -1301,12 +1298,9 @@
   <div class="about-grid">
     <div class="about-summary reveal">
       <p>
-        Dynamics 365 CE and Power Platform specialist with <strong>6+ years</strong> building and leading CRM solutions
-        for government and commercial clients across Qatar and Pakistan. Strong in
-        <strong>C#/.NET plugin development</strong>, Dataverse architecture, Power Pages portals, and third-party
-        system integration. Led a <strong>14-person delivery team</strong> at a Doha-based Microsoft partner,
-        shipping public-sector platforms for MCIT, MSDF, and IPA Qatar.
-        Holds <strong>16 Microsoft certifications</strong> including the PL-600 Solution Architect Expert.
+        Dynamics 365 CE &amp; Power Platform <strong>Solution Architect</strong> with <strong>6+ years</strong> delivering
+        CRM platforms for government and enterprise in Qatar and Pakistan. <strong>20+ implementations</strong>,
+        led a <strong>14-person team</strong>, and <strong>16 Microsoft certifications</strong> including PL-600 and AB-100.
       </p>
       <div class="about-flow">
         <span class="flow-node" style="background:#742774">Dataverse</span>
@@ -1376,11 +1370,11 @@
         </div>
         <div class="exp-company">Hassad Food — Qatar's National Food Security Company · Doha, Qatar</div>
         <ul class="exp-bullets">
-          <li>Maintain and extend <strong>Raqmana</strong>, Qatar's public-sector agriculture digitalization platform built on Dynamics 365 and Power Platform.</li>
-          <li>Delivered a <strong>machinery booking module</strong> enabling farmers and agri-businesses to reserve government equipment, replacing a manual scheduling process.</li>
-          <li>Built an <strong>AI-powered plant disease detection</strong> feature integrating Azure AI Services with Dynamics CRM — field workers identify crop diseases via image upload inside the platform.</li>
-          <li>Developed a <strong>Trader Support Portal</strong> allowing suppliers to apply for government reimbursements online, streamlining subsidy claims for the agriculture supply chain.</li>
-          <li>Built a <strong>feedback module</strong> capturing user satisfaction data to drive continuous improvement of platform services.</li>
+          <li>Extending <strong>Raqmana</strong>, Qatar's national agriculture platform on Dynamics 365 &amp; Power Platform.</li>
+          <li>Delivered an emergency <strong>Trader Support Portal</strong> for subsidy claims during a regional supply disruption.</li>
+          <li>Built <strong>equipment booking</strong>, <strong>aquaculture</strong>, <strong>case management</strong> and <strong>feedback</strong> modules.</li>
+          <li>Integrated <strong>AI crop disease detection</strong> (DeepLeaf) into the farmer portal.</li>
+          <li>Re-architected <strong>Import Auction</strong> into standalone APIs + frontend with CRM-based sign-in.</li>
         </ul>
       </div>
     </div>
@@ -1389,7 +1383,7 @@
       <div class="exp-dot"></div>
       <div class="exp-card">
         <div class="exp-header">
-          <h3 class="exp-role">Team Lead — Dynamics CRM &amp; Power Platform</h3>
+          <h3 class="exp-role">Team Lead → Head of Business Applications</h3>
           <span class="exp-period">Jun 2023 — Sep 2025</span>
         </div>
         <div class="exp-company">Applab · Doha, Qatar</div>
@@ -1451,7 +1445,7 @@
           <span class="proj-badge">Hassad Food</span>
         </div>
         <p class="proj-period">Mar 2026 – Present</p>
-        <p class="proj-body">Built a trader support portal from scratch for the Ministry of Commerce and Industry (MOCI), Qatar, supporting traders with transportation-cost subsidies following the closure of the Strait of Hormuz. Customized Dynamics 365 CRM to support subsidy business processes, developed CRM automations and business logic to streamline workflows, designed and developed backend APIs to integrate Dynamics 365 with the trader-facing portal, and collaborated with the frontend developer on API integration and end-to-end solution delivery.</p>
+        <p class="proj-body">Built a trader support portal from scratch for the Ministry of Commerce and Industry (MOCI), Qatar, supporting traders with transportation-cost subsidies during a regional supply disruption. Customized Dynamics 365 CRM to support subsidy business processes, developed CRM automations and business logic to streamline workflows, designed and developed backend APIs to integrate Dynamics 365 with the trader-facing portal, and collaborated with the frontend developer on API integration and end-to-end solution delivery.</p>
         <div class="proj-tags">
           <span class="proj-tag">Dynamics 365</span>
           <span class="proj-tag">Backend APIs</span>
@@ -1854,9 +1848,8 @@
 /* ── Lenis smooth scroll ────────────────────── */
 let lenis;
 try {
-  lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-  function rafLoop(time) { lenis.raf(time); requestAnimationFrame(rafLoop); }
-  requestAnimationFrame(rafLoop);
+  // driven by gsap.ticker below; a second rAF loop here double-stepped Lenis each frame
+  lenis = new Lenis({ lerp: 0.12 });
 } catch(e) { /* fallback to native scroll */ }
 
 /* ── GSAP + ScrollTrigger ───────────────────── */
@@ -1875,7 +1868,7 @@ if (lenis) {
   if (!canvas || !window.THREE) return;
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   const scene  = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 2000);
   camera.position.z = 400;
@@ -2224,7 +2217,7 @@ document.querySelectorAll('.proj-card').forEach(card => {
       gsap.to(card, {
         y: depths[i % depths.length],
         ease: 'none',
-        scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 1.2 }
+        scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 0.3 }
       });
     });
   }
