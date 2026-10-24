@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anwar Ul Haq — Senior D365 CRM &amp; Power Platform Consultant</title>
-  <meta name="description" content="Senior Dynamics 365 CRM &amp; Power Platform Consultant — 6+ years, 10 Microsoft certifications, PL-600 Solution Architect. Based in Doha, Qatar.">
+  <meta name="description" content="Senior Dynamics 365 CRM &amp; Power Platform Consultant — 6+ years, 16 Microsoft certifications, PL-600 Solution Architect. Based in Doha, Qatar.">
   <meta property="og:title" content="Anwar Ul Haq — Dynamics 365 &amp; Power Platform Consultant">
   <meta property="og:url" content="https://anwarluck.github.io/">
   <link rel="shortcut icon" href="assets/images/favicon.png">
@@ -122,6 +122,7 @@
       background: rgba(242,244,255,0.92);
       border-bottom: 1px solid var(--border);
       box-shadow: 0 1px 16px rgba(0,0,80,0.06);
+      border-top: 3px solid rgba(0,212,255,0.15);
       transform: translateY(-100%);
       transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
     }
@@ -761,7 +762,7 @@
     /* ─── CERTIFICATIONS ────────────────────────────── */
     .cert-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       perspective: 800px;
     }
@@ -811,6 +812,30 @@
       color: var(--white);
       line-height: 1.3;
     }
+
+    .cert-extra { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .cert-extra-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .cert-extra-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 130px;
+    }
+    .cert-chip {
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--glass2);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--white);
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .cert-chip:hover { border-color: var(--border2); }
+    .cert-chip-prev { color: var(--muted); opacity: 0.75; }
 
     /* ─── SKILLS ────────────────────────────────────── */
     .skills-grid {
@@ -1098,7 +1123,10 @@
       .skills-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
-      .nav-links { display: none; }
+      .nav { flex-wrap: wrap; padding: 10px 16px; row-gap: 8px; }
+      .nav-links { order: 3; width: 100%; gap: 20px; overflow-x: auto; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { white-space: nowrap; }
       .section { padding: 80px 24px; }
       #stats { padding: 40px 24px; }
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -1175,7 +1203,7 @@
 <!-- ─── NAV ──────────────────────────────────────── -->
 <div id="scroll-progress"></div>
 
-<nav class="nav" id="main-nav">
+<nav class="nav show" id="main-nav">
   <div class="nav-brand">AUH // D365 &amp; PP</div>
   <ul class="nav-links">
     <li><a href="#about-section">About</a></li>
@@ -1231,7 +1259,7 @@
 
     <div class="hero-cert-badge" id="h-badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-      11× Microsoft Certified — PL-600 &amp; AB-100 Architect
+      16× Microsoft Certified — PL-600 &amp; AB-100 Architect
     </div>
   </div>
 
@@ -1249,7 +1277,7 @@
       <div class="stat-label">Years Experience</div>
     </div>
     <div class="stat-card reveal">
-      <div class="stat-num"><span class="counter" data-to="11">0</span></div>
+      <div class="stat-num"><span class="counter" data-to="16">0</span></div>
       <div class="stat-label">Microsoft Certifications</div>
     </div>
     <div class="stat-card reveal">
@@ -1257,7 +1285,7 @@
       <div class="stat-label">Team Size Led</div>
     </div>
     <div class="stat-card reveal">
-      <div class="stat-num"><span class="counter" data-to="10">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-num"><span class="counter" data-to="20">0</span><span class="stat-suffix">+</span></div>
       <div class="stat-label">CRM Implementations</div>
     </div>
   </div>
@@ -1278,7 +1306,7 @@
         <strong>C#/.NET plugin development</strong>, Dataverse architecture, Power Pages portals, and third-party
         system integration. Led a <strong>14-person delivery team</strong> at a Doha-based Microsoft partner,
         shipping public-sector platforms for MCIT, MSDF, and IPA Qatar.
-        Holds <strong>10 active Microsoft certifications</strong> including the PL-600 Solution Architect Expert.
+        Holds <strong>16 Microsoft certifications</strong> including the PL-600 Solution Architect Expert.
       </p>
       <div class="about-flow">
         <span class="flow-node" style="background:#742774">Dataverse</span>
@@ -1612,7 +1640,7 @@
 <div id="certifications-section" class="section">
   <div class="section-header reveal">
     <p class="section-eyebrow">Microsoft Credentials</p>
-    <h2 class="section-title">11 Active Certifications</h2>
+    <h2 class="section-title">16 Microsoft Certifications</h2>
     <div class="section-divider"></div>
   </div>
   <div class="cert-grid">
@@ -1620,6 +1648,11 @@
       <div class="cert-badge-wrap cb-expert">PL<br>600</div>
       <div class="cert-code">PL-600</div>
       <div class="cert-name">Solution Architect Expert</div>
+    </a>
+    <a class="cert-card reveal" href="https://learn.microsoft.com/en-gb/users/anwarluck/credentials/60a5ae6aa0a997c7" target="_blank" rel="noopener">
+      <div class="cert-badge-wrap cb-expert">AB<br>100</div>
+      <div class="cert-code">AB-100</div>
+      <div class="cert-name">Agentic AI Business Solutions Architect</div>
     </a>
     <a class="cert-card reveal" href="https://www.credly.com/badges/eb6cacc7-6c3c-4b9c-b405-b4c8c005f5c2/public_url" target="_blank" rel="noopener">
       <div class="cert-badge-wrap cb-pl">PL<br>400</div>
@@ -1636,11 +1669,6 @@
       <div class="cert-code">PL-200</div>
       <div class="cert-name">Functional Consultant Assoc.</div>
     </a>
-    <a class="cert-card reveal" href="https://www.credly.com/badges/3cb064a9-be82-44a0-8586-70049d59ede4/public_url" target="_blank" rel="noopener">
-      <div class="cert-badge-wrap cb-pl">PL<br>100</div>
-      <div class="cert-code">PL-100</div>
-      <div class="cert-name">App Maker Associate</div>
-    </a>
     <a class="cert-card reveal" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">
       <div class="cert-badge-wrap cb-mb">MB<br>280</div>
       <div class="cert-code">MB-280</div>
@@ -1656,21 +1684,11 @@
       <div class="cert-code">MB-230</div>
       <div class="cert-name">Customer Service Consultant</div>
     </a>
-    <a class="cert-card reveal" href="https://www.credly.com/badges/1b6c8445-63c1-4b35-9c32-33d85e2c9c91/public_url" target="_blank" rel="noopener">
-      <div class="cert-badge-wrap cb-mb">MB<br>220</div>
-      <div class="cert-code">MB-220</div>
-      <div class="cert-name">Marketing Consultant</div>
-    </a>
-    <a class="cert-card reveal" href="https://www.credly.com/badges/6ca9f63f-a52e-4802-b6fc-d36a7c9f1577/public_url" target="_blank" rel="noopener">
-      <div class="cert-badge-wrap cb-mb">MB<br>210</div>
-      <div class="cert-code">MB-210</div>
-      <div class="cert-name">Sales Functional Consultant</div>
-    </a>
-    <a class="cert-card reveal" href="https://learn.microsoft.com/en-gb/users/anwarluck/credentials/60a5ae6aa0a997c7" target="_blank" rel="noopener">
-      <div class="cert-badge-wrap cb-expert">AB<br>100</div>
-      <div class="cert-code">AB-100</div>
-      <div class="cert-name">Agentic AI Business Solutions Architect</div>
-    </a>
+  </div>
+  <div class="cert-extra reveal">
+    <div class="cert-extra-row"><span class="cert-extra-label">Fundamentals</span><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">PL-900</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">MB-910</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">MB-920</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">AZ-900</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">AI-900</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">DP-900</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">SC-900</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">MS-900</a></div>
+    <div class="cert-extra-row"><span class="cert-extra-label">Applied Skills</span><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">AI Builder</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">Model-Driven Apps</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">Canvas Apps</a><a class="cert-chip" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">Power Automate</a></div>
+    <div class="cert-extra-row"><span class="cert-extra-label">Previously held</span><a class="cert-chip cert-chip-prev" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">MB-210 Sales</a><a class="cert-chip cert-chip-prev" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">MB-220 Customer Insights</a><a class="cert-chip cert-chip-prev" href="https://learn.microsoft.com/en-gb/users/anwarluck/" target="_blank" rel="noopener">PL-100 App Maker</a></div>
   </div>
 </div>
 
@@ -1784,7 +1802,7 @@
   <div class="contact-wrap reveal">
     <p class="section-eyebrow" style="justify-content:center;display:flex">Let's Build Something</p>
     <h2 class="contact-title">Available for Opportunities</h2>
-    <p class="contact-subtitle">Open to senior consulting roles, solution architecture engagements,<br>and enterprise D365/Power Platform projects across the GCC region.</p>
+    <p class="contact-subtitle">Open to senior consulting roles, solution architecture engagements,<br>and enterprise D365/Power Platform projects — open to relocation to the UK, Germany, New Zealand &amp; Australia.</p>
     <div class="contact-info">
       <div class="contact-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -1933,14 +1951,6 @@ if (lenis) {
   })();
 })();
 
-/* ── Nav show/hide ──────────────────────────── */
-const nav = document.getElementById('main-nav');
-const heroHeight = () => document.getElementById('hero').offsetHeight;
-ScrollTrigger.create({
-  start: () => heroHeight() * 0.6 + ' top',
-  onEnter:     () => nav.classList.add('show'),
-  onLeaveBack: () => nav.classList.remove('show'),
-});
 
 /* ── Hero entrance animations ───────────────── */
 const heroTL = gsap.timeline({ delay: 0.2 });
