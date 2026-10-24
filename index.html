@@ -12,7 +12,7 @@
       var d = document.documentElement, ls = {};
       try { ls = window.localStorage; } catch (e) {}
       function get(k) { try { return ls.getItem(k); } catch (e) { return null; } }
-      var theme = get('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var theme = get('theme') || 'light';
       d.setAttribute('data-theme', theme);
       var q = new URLSearchParams(location.search).get('lang');
       var lang = ['en','de','fr','ar'].indexOf(q) > -1 ? q : (get('lang') || 'en');
@@ -728,7 +728,7 @@
       display: flex;
       flex-direction: column;
       --sx: -999px; --sy: -999px;
-      transform-style: preserve-3d;
+      transform-style: flat; /* flat: translateZ layers would drift off-centre under the grid perspective */
       will-change: transform;
     }
     .proj-card[data-co="hassad"]  { --spot: rgba(0,132,180,0.14); }
@@ -1957,16 +1957,19 @@
   const dict = window.I18N && window.I18N[root.lang];
   if (!dict) return;
   if (dict.title) document.title = dict.title;
+  const decoder = document.createElement('textarea');
   for (const [selector, values] of Object.entries(dict)) {
     if (!Array.isArray(values)) continue;
     document.querySelectorAll(selector).forEach((el, i) => {
       const v = values[i];
       if (v == null) return;
       if (v.includes('<')) { el.innerHTML = v; return; }
+      decoder.innerHTML = v;  // turn &amp; etc. into real characters for text nodes
+      const text = decoder.value;
       // keep icons: swap only the last non-empty text node
       const nodes = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim());
-      if (nodes.length) nodes[nodes.length - 1].textContent = ' ' + v + ' ';
-      else el.textContent = v;
+      if (nodes.length) nodes[nodes.length - 1].textContent = ' ' + text + ' ';
+      else el.textContent = text;
     });
   }
 })();
