@@ -205,6 +205,14 @@
     [dir="rtl"] .exp-bullets li::before { left: auto; right: 0; content: '◂'; }
     [dir="rtl"] .proj-inner { padding: 28px 36px 28px 28px; }
     @media (max-width: 700px) { [dir="rtl"] .exp-timeline { padding-left: 0; padding-right: 32px; } }
+    /* English-only snippets inside the RTL page: keep their own reading order */
+    bdi.nw { white-space: nowrap; }
+    [dir="rtl"] .skill-group-label, [dir="rtl"] .stack-panel-title,
+    [dir="rtl"] .stat-num { direction: ltr; text-align: right; }
+    [dir="rtl"] .cert-name, [dir="rtl"] .cert-code, [dir="rtl"] footer > span:first-child { direction: ltr; }
+    [dir="rtl"] .s-tag, [dir="rtl"] .proj-tag, [dir="rtl"] .proj-badge, [dir="rtl"] .cert-chip,
+    [dir="rtl"] .stack-badge, [dir="rtl"] .flow-node, [dir="rtl"] .proj-filter-btn { unicode-bidi: isolate; direction: ltr; }
+    [dir="rtl"] .flow-arrow { display: inline-block; transform: scaleX(-1); }
 
     /* ─── HERO ──────────────────────────────────────── */
     #hero {
@@ -779,10 +787,6 @@
       text-align: justify;
       hyphens: auto;
       color: var(--muted);
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
       margin-bottom: 16px;
       flex: 1;
     }

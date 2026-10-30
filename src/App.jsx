@@ -10,7 +10,12 @@ import { initEffects } from './effects.js';
 // and the GSAP/Three code in effects.js can safely work on the DOM it produces.
 const lang = document.documentElement.lang in STRINGS ? document.documentElement.lang : 'en';
 const t = STRINGS[lang];
-const html = s => ({ __html: s });
+// In Arabic, keep each English run ("Power Pages", "PL-600") on one line and in its own reading
+// direction, so it can't split mid-term or pull neighbouring Arabic punctuation into the wrong place.
+const LATIN_RUN = /[A-Za-z0-9(][A-Za-z0-9 .\-+#&;:()]*[A-Za-z0-9)]|[A-Za-z0-9]/g;
+const isolateLatin = s => s.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) =>
+  tag || text.replace(LATIN_RUN, run => (/[A-Za-z]/.test(run) ? `<bdi class="nw">${run}</bdi>` : run)));
+const html = s => ({ __html: lang === 'ar' ? isolateLatin(s) : s });
 const EMAIL = 'anwarluck@outlook.com';
 const PHONE = '+974 7134 2346';
 
@@ -141,7 +146,7 @@ export default function App() {
                   <h3 className="exp-role" dangerouslySetInnerHTML={html(e.role)} />
                   <span className="exp-period">{e.period}</span>
                 </div>
-                <div className="exp-company">{e.company}</div>
+                <div className="exp-company" dangerouslySetInnerHTML={html(e.company)} />
                 <ul className="exp-bullets">
                   {e.bullets.map((b, i) => <li key={i} dangerouslySetInnerHTML={html(b)} />)}
                 </ul>
@@ -170,7 +175,7 @@ export default function App() {
                     <span className="proj-badge">{p.badge}</span>
                   </div>
                   {s.period && <p className="proj-period">{s.period}</p>}
-                  <p className="proj-body">{s.body}</p>
+                  <p className="proj-body" dangerouslySetInnerHTML={html(s.body)} />
                   <div className="proj-tags">{p.tags.map(tag => <span className="proj-tag" key={tag}>{tag}</span>)}</div>
                 </div>
               </div>
@@ -227,7 +232,8 @@ export default function App() {
               </div>
             ))}
           </div>
-          <div className="atest-right">
+          {/* quotes are English in every language, so this column always reads left-to-right */}
+          <div className="atest-right" dir="ltr">
             <span className="atest-qi">&ldquo;</span>
             <p className="atest-quote" id="atestQuote"></p>
             <div className="atest-divider"></div>

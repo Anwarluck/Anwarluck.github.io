@@ -173,7 +173,7 @@ function testimonials() {
 
   function revealText(idx) {
     const r = TESTIMONIALS[idx];
-    quoteEl.innerHTML = r.q.split(' ').map(w => `<span class="atest-word">${w}&nbsp;</span>`).join('');
+    quoteEl.innerHTML = r.q.split(' ').map(w => `<span class="atest-word">${w}</span>`).join(' ');
     gsap.fromTo(quoteEl.querySelectorAll('.atest-word'),
       { filter: 'blur(7px)', opacity: 0, y: 5 },
       { filter: 'blur(0px)', opacity: 1, y: 0, duration: 0.2, stagger: 0.013, ease: 'power2.out' });

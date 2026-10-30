@@ -421,7 +421,7 @@ export const STRINGS = {
     "contactSubtitle": "Ouvert aux postes de consultant senior, aux missions d’architecture de solutions<br>et aux projets Dynamics 365 / Power Platform — prêt à m’installer au Royaume-Uni, en Allemagne, en Nouvelle-Zélande ou en Australie."
   },
   "ar": {
-    "title": "أنوار الحق — مهندس حلول Dynamics 365 CRM و Power Platform",
+    "title": "أنوار الحق — مهندس حلول Dynamics 365 CRM و Power Platform",
     "nav": [
       "نبذة",
       "الخبرات",
@@ -433,9 +433,9 @@ export const STRINGS = {
     "hire": "تواصل معي",
     "mcid": "MICROSOFT ID: 991520706 // الدوحة، قطر",
     "avail": "متاح لفرص جديدة",
-    "role": "استشاري أول <span>Dynamics 365 CRM</span> و <span>Power Platform</span>",
+    "role": "استشاري أول <span>Dynamics 365 CRM</span> و <span>Power Platform</span>",
     "city": "الدوحة، قطر",
-    "badge": "16 شهادة من Microsoft — مهندس حلول PL-600 و AB-100",
+    "badge": "16 شهادة من Microsoft — مهندس حلول PL-600 و AB-100",
     "scroll": "مرّر",
     "stats": [
       "سنوات الخبرة",
@@ -460,16 +460,16 @@ export const STRINGS = {
       "skills": "المهارات والتقنيات",
       "recs": "التوصيات"
     },
-    "summary": "<strong>مهندس حلول</strong> Dynamics 365 CE و Power Platform بخبرة <strong>تزيد على 6 سنوات</strong> في تنفيذ منصات CRM للجهات الحكومية والمؤسسات في قطر وباكستان. <strong>أكثر من 20 مشروع تنفيذ</strong>، وقيادة <strong>فريق من 14 شخصاً</strong>، و<strong>16 شهادة من Microsoft</strong> منها PL-600 و AB-100.",
+    "summary": "<strong>مهندس حلول</strong> Dynamics 365 CE و Power Platform بخبرة <strong>تزيد على 6 سنوات</strong> في تنفيذ منصات CRM للجهات الحكومية والمؤسسات في قطر وباكستان. <strong>أكثر من 20 مشروع تنفيذ</strong>، وقيادة <strong>فريق من 14 شخصاً</strong>، و<strong>16 شهادة من Microsoft</strong> منها PL-600 و AB-100.",
     "exp": [
       {
-        "role": "استشاري أول Dynamics CRM و Power Platform",
+        "role": "استشاري أول Dynamics CRM و Power Platform",
         "period": "أكتوبر 2025 — حتى الآن",
         "company": "حصاد الغذائية — الشركة الوطنية للأمن الغذائي في قطر · الدوحة، قطر",
         "bullets": [
-          "تطوير منصة <strong>رقمنة</strong>، المنصة الزراعية الوطنية في قطر المبنية على Dynamics 365 و Power Platform.",
+          "تطوير منصة <strong>رقمنة</strong>، المنصة الزراعية الوطنية في قطر المبنية على Dynamics 365 و Power Platform.",
           "تنفيذ <strong>بوابة دعم التجار</strong> لطلبات الدعم خلال اضطراب إقليمي في سلاسل الإمداد.",
-          "بناء وحدات <strong>حجز المعدات</strong> و<strong>الاستزراع المائي</strong> و<strong>إدارة الحالات</strong> و<strong>الملاحظات</strong>.",
+          "بناء وحدات <strong>حجز المعدات</strong>، و<strong>الاستزراع المائي</strong>، و<strong>إدارة الحالات</strong>، و<strong>الملاحظات</strong>.",
           "دمج <strong>الكشف عن أمراض المحاصيل بالذكاء الاصطناعي</strong> (DeepLeaf) في بوابة المزارعين.",
           "إعادة هندسة <strong>مزاد الاستيراد</strong> إلى واجهات API مستقلة وواجهة أمامية مع تسجيل دخول عبر CRM."
         ]
@@ -479,10 +479,10 @@ export const STRINGS = {
         "period": "يونيو 2023 — سبتمبر 2025",
         "company": "Applab · الدوحة، قطر",
         "bullets": [
-          "قيادة <strong>فريق من 14</strong> مطوراً واستشارياً لتنفيذ حلول Dynamics 365 و Power Platform لجهات حكومية قطرية.",
-          "<strong>منصة قطر للتعاون (QCH) – وزارة الاتصالات:</strong> تصميم منصة طلبات خدمات حكومية على Dynamics CRM و Power Pages و Azure App Service و Azure AI Services مع مسارات موافقة متعددة المراحل ووحدة لإدارة التعاميم.",
-          "<strong>وتد للاستشارات الإلكترونية – وزارة التنمية الاجتماعية والأسرة:</strong> منصة استشارات متعددة القنوات (حضورياً، Microsoft Teams، هاتفياً) بواجهة Angular وخلفية Dynamics CRM، تشمل تنسيق الأخصائيين الاجتماعيين وجدولة الاستشاريين.",
-          "<strong>وكالة ترويج الاستثمار (IPA Qatar):</strong> تطوير وحدتي الحوافز وعلاقات المستثمرين مع سير عمل مؤتمت وتخصيصات Power Pages وواجهات Web API وتكامل لتبادل البيانات مع الجهات الحكومية.",
+          "قيادة <strong>فريق من 14</strong> مطوراً واستشارياً لتنفيذ حلول Dynamics 365 و Power Platform لجهات حكومية قطرية.",
+          "<strong>منصة قطر للتعاون (QCH) – وزارة الاتصالات:</strong> تصميم منصة طلبات خدمات حكومية على Dynamics CRM، و Power Pages، و Azure App Service، و Azure AI Services، مع مسارات موافقة متعددة المراحل ووحدة لإدارة التعاميم.",
+          "<strong>وتد للاستشارات الإلكترونية – وزارة التنمية الاجتماعية والأسرة:</strong> منصة استشارات متعددة القنوات (حضورياً، وعبر Microsoft Teams، وهاتفياً) بواجهة Angular وخلفية Dynamics CRM، تشمل تنسيق الأخصائيين الاجتماعيين وجدولة الاستشاريين.",
+          "<strong>وكالة ترويج الاستثمار (IPA Qatar):</strong> تطوير وحدتي الحوافز وعلاقات المستثمرين مع سير عمل مؤتمت، وتخصيصات Power Pages، وواجهات Web API، وتكامل لتبادل البيانات مع الجهات الحكومية.",
           "الالتزام الدائم بمواعيد التسليم أو التقدم عليها، وتطبيق معايير الأمن وحماية البيانات في جميع بوابات Power Pages الحكومية."
         ]
       },
@@ -491,9 +491,9 @@ export const STRINGS = {
         "period": "فبراير 2020 — أبريل 2023",
         "company": "Skysoft Connections · إسلام آباد، باكستان",
         "bullets": [
-          "تنفيذ <strong>أكثر من 10 مشاريع CRM</strong> لعملاء في البنوك والرعاية الصحية والسيارات والتجزئة في باكستان والشرق الأوسط.",
-          "دمج Dynamics CRM مع <strong>WhatsApp Cloud API</strong> و<strong>DocuSign</strong> و<strong>OneSignal</strong> و<strong>MS Bookings</strong> و<strong>7Pace Time Tracker</strong> عبر موصلات Power Automate مخصصة و Webhooks.",
-          "توسيع <strong>نظام Auto Mercado CRM</strong> عبر عدة وحدات أعمال باستخدام Plugins وموارد ويب وتقارير SSRS وإشعارات SMS والإشعارات الفورية.",
+          "تنفيذ <strong>أكثر من 10 مشاريع CRM</strong> لعملاء في البنوك، والرعاية الصحية، والسيارات، والتجزئة في باكستان والشرق الأوسط.",
+          "دمج Dynamics CRM مع <strong>WhatsApp Cloud API</strong>، و <strong>DocuSign</strong>، و <strong>OneSignal</strong>، و <strong>MS Bookings</strong>، و<strong>7Pace Time Tracker</strong> عبر موصلات Power Automate مخصصة و Webhooks.",
+          "توسيع <strong>نظام Auto Mercado CRM</strong> عبر عدة وحدات أعمال باستخدام Plugins، وموارد ويب، وتقارير SSRS، وإشعارات SMS والإشعارات الفورية.",
           "بناء <strong>مسارات ترحيل بيانات SSIS</strong> و<strong>حزم تقارير SSRS</strong>، وتطوير Canvas Apps لاستبدال العمليات اليدوية."
         ]
       }
@@ -508,27 +508,27 @@ export const STRINGS = {
       {
         "title": "Invest Qatar (IPAQ)",
         "period": "يوليو 2023 – سبتمبر 2025",
-        "body": "العمل على وحدتي الحوافز وعلاقات المستثمرين ضمن مشروع CRM شامل: سير عمل مؤتمت و Business Process Flows، وتخصيص Power Pages، ولوحات معلومات وواجهات Web API مخصصة للتكامل مع Dynamics CRM، وتبادل البيانات مع الجهات الحكومية، مع تحسين وظائف CRM وضمان التوافق مع الأنظمة الخارجية."
+        "body": "العمل على وحدتي الحوافز وعلاقات المستثمرين ضمن مشروع CRM شامل: سير عمل مؤتمت و Business Process Flows، وتخصيص Power Pages، ولوحات معلومات وواجهات Web API مخصصة للتكامل مع Dynamics CRM، وتبادل البيانات مع الجهات الحكومية، مع تحسين وظائف CRM وضمان التوافق مع الأنظمة الخارجية."
       },
       {
         "title": "وزارة الاتصالات – منصة قطر للتعاون",
         "period": null,
-        "body": "المساهمة في بناء منصة رقمية مركزية لوزارة الاتصالات وتكنولوجيا المعلومات لإدارة التعاميم وطلبات الخدمات السحابية وتسجيل الجهات المعنية. نُفذت باستخدام Dynamics 365 CRM و Power Pages و Power Automate مع صلاحيات قائمة على الأدوار وبوابات خارجية آمنة وسير عمل مؤتمت بدلاً من العمليات اليدوية. النتيجة: كفاءة وشفافية أعلى وتواصل آمن بين الوزارة والجهات الخارجية."
+        "body": "المساهمة في بناء منصة رقمية مركزية لوزارة الاتصالات وتكنولوجيا المعلومات لإدارة التعاميم، وطلبات الخدمات السحابية، وتسجيل الجهات المعنية. نُفذت باستخدام Dynamics 365 CRM، و Power Pages، و Power Automate، مع صلاحيات قائمة على الأدوار، وبوابات خارجية آمنة، وسير عمل مؤتمت بدلاً من العمليات اليدوية. النتيجة: كفاءة وشفافية أعلى، وتواصل آمن بين الوزارة والجهات الخارجية."
       },
       {
         "title": "The Flow – المالية وتتبع الوقت",
         "period": null,
-        "body": "قيادة تصميم وتطوير The Flow، حل CRM و Power Platform لتنظيم العمليات الداخلية في Applab. وحدة المالية: تطبيقات Model-Driven على Dynamics 365 تغطي الدورة الكاملة من العملاء المحتملين والفرص إلى تحويل المشاريع والمتابعة المالية. وحدة الوقت: موقع Power Pages مخصص بالكامل لتسجيل المهام وساعات العمل اليومية ومتابعة التكاليف والتسليم وتخطيط الموارد ومؤشرات الأداء."
+        "body": "قيادة تصميم وتطوير The Flow، حل CRM و Power Platform لتنظيم العمليات الداخلية في Applab. وحدة المالية: تطبيقات Model-Driven على Dynamics 365 تغطي الدورة الكاملة من العملاء المحتملين والفرص إلى تحويل المشاريع والمتابعة المالية. وحدة الوقت: موقع Power Pages مخصص بالكامل لتسجيل المهام وساعات العمل اليومية، ومتابعة التكاليف والتسليم، وتخطيط الموارد، ومؤشرات الأداء."
       },
       {
         "title": "وتد – نظام الاستشارات الإلكترونية",
         "period": null,
-        "body": "المساهمة في تطوير منصة وتد التابعة لوزارة التنمية الاجتماعية والأسرة في قطر، والتي تربط الأفراد والأسر بالاستشاريين (فيديو، هاتف، أو حضورياً). تخصيص Dynamics CRM للجدولة والملاحظات ومتابعة التقدم، ودمجه مع واجهة Angular و Microsoft Teams للمواعيد الصوتية والمرئية، وبناء واجهات API لتبادل البيانات الحكومية وأدوات تقارير لمتابعة الأداء."
+        "body": "المساهمة في تطوير منصة وتد التابعة لوزارة التنمية الاجتماعية والأسرة في قطر، والتي تربط الأفراد والأسر بالاستشاريين (عبر الفيديو، أو الهاتف، أو حضورياً). تخصيص Dynamics CRM للجدولة، والملاحظات، ومتابعة التقدم، ودمجه مع واجهة Angular و Microsoft Teams للمواعيد الصوتية والمرئية، وبناء واجهات API لتبادل البيانات الحكومية وأدوات تقارير لمتابعة الأداء."
       },
       {
         "title": "Auto Mercado CRM",
         "period": null,
-        "body": "تخصيص Dynamics CRM وتوسيع وظائفه عبر عدة وحدات أعمال باستخدام سير العمل و Plugins وموارد الويب و Custom Actions و Web API. إنشاء تقارير SSRS ودمج خدمات خارجية لإرسال الرسائل النصية والإشعارات الفورية عبر OneSignal."
+        "body": "تخصيص Dynamics CRM وتوسيع وظائفه عبر عدة وحدات أعمال باستخدام سير العمل، و Plugins، وموارد الويب، و Custom Actions، و Web API. إنشاء تقارير SSRS ودمج خدمات خارجية لإرسال الرسائل النصية والإشعارات الفورية عبر OneSignal."
       },
       {
         "title": "Ciclic – تكامل WhatsApp مع CRM",
@@ -538,17 +538,17 @@ export const STRINGS = {
       {
         "title": "ترحيل BS – من الخوادم المحلية إلى السحابة",
         "period": null,
-        "body": "ترحيل FBS، وهي مؤسسة في القطاع المصرفي، من الخوادم المحلية إلى السحابة: نقل جميع البيانات والتخصيصات والعمليات إلى النسخة السحابية من CRM، وتحسين التقارير عبر Power BI وتحويل استعلامات SSRS من SQL إلى FetchXML."
+        "body": "ترحيل FBS، وهي مؤسسة في القطاع المصرفي، من الخوادم المحلية إلى السحابة: نقل جميع البيانات، والتخصيصات، والعمليات إلى النسخة السحابية من CRM، وتحسين التقارير عبر Power BI وتحويل استعلامات SSRS من SQL إلى FetchXML."
       },
       {
         "title": "Instant Products Group – Syrinx",
         "period": null,
-        "body": "تطوير حل لمجموعة Instant Products لإرسال إشعارات المهام عبر بوابة بيانات محلية و Azure Logic Apps و Power Automate، يربط البنية المحلية بالسحابة لإشعارات فورية."
+        "body": "تطوير حل لمجموعة Instant Products لإرسال إشعارات المهام عبر بوابة بيانات محلية، و Azure Logic Apps، و Power Automate، يربط البنية المحلية بالسحابة لإشعارات فورية."
       },
       {
         "title": "Tech Fabric – CRM وتتبع الوقت",
         "period": null,
-        "body": "تخصيص وحدة Project Operations (Field Service) باستخدام سير العمل و Plugins و Azure Functions مع تقارير SSRS، ودمج تسجيل الوقت مع 7Pace Time Tracker عبر Power Automate مما حسّن متابعة المشاريع وإدارة الوقت بشكل ملحوظ."
+        "body": "تخصيص وحدة Project Operations (Field Service) باستخدام سير العمل، و Plugins، و Azure Functions، مع تقارير SSRS، ودمج تسجيل الوقت مع 7Pace Time Tracker عبر Power Automate مما حسّن متابعة المشاريع وإدارة الوقت بشكل ملحوظ."
       }
     ],
     "certLabels": [
