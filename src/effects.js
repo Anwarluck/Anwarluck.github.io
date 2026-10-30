@@ -54,7 +54,7 @@ function initThree() {
   if (!canvas) return;
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setPixelRatio(1); // faint background: full retina resolution isn't visible, but costs 2.25x the pixels
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 2000);
   camera.position.z = 400;
@@ -107,7 +107,16 @@ function initThree() {
     my = (e.clientY / window.innerHeight - 0.5) * 2;
   });
 
-  (function loop() {
+  // Rendering this full-screen scene every frame is what made scrolling stutter, so it pauses
+  // while the page scrolls and resumes once scrolling stops.
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => { lastScroll = performance.now(); }, { passive: true });
+  window.addEventListener('wheel', () => { lastScroll = performance.now(); }, { passive: true });
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  (function loop(now) {
+    requestAnimationFrame(loop);
+    if (still || now - lastScroll < 200) return;
     points.rotation.y += 0.0008;
     points.rotation.x += 0.0004;
     tk.rotation.x += 0.004; tk.rotation.y += 0.005;
@@ -116,8 +125,8 @@ function initThree() {
     camera.position.y += (-my * 18 - camera.position.y) * 0.025;
     camera.lookAt(scene.position);
     renderer.render(scene, camera);
-    requestAnimationFrame(loop);
-  })();
+  })(0);
+  if (still) renderer.render(scene, camera);
 }
 
 function heroIntro() {
