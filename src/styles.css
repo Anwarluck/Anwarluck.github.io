@@ -207,6 +207,7 @@
     @media (max-width: 700px) { [dir="rtl"] .exp-timeline { padding-left: 0; padding-right: 32px; } }
     /* English-only snippets inside the RTL page: keep their own reading order */
     bdi.nw { white-space: nowrap; }
+    @media (max-width: 700px) { .contact-subtitle br { display: none; } }
     [dir="rtl"] .skill-group-label, [dir="rtl"] .stack-panel-title,
     [dir="rtl"] .stat-num { direction: ltr; text-align: right; }
     [dir="rtl"] .cert-name, [dir="rtl"] .cert-code, [dir="rtl"] footer > span:first-child { direction: ltr; }
