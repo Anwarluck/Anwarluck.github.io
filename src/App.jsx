@@ -13,8 +13,8 @@ const t = STRINGS[lang];
 // In Arabic, keep each English run ("Power Pages", "PL-600") on one line and in its own reading
 // direction, so it can't split mid-term or pull neighbouring Arabic punctuation into the wrong place.
 const LATIN_RUN = /[A-Za-z0-9(][A-Za-z0-9 .\-+#&;:()]*[A-Za-z0-9)]|[A-Za-z0-9]/g;
-const isolateLatin = s => s.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) =>
-  tag || text.replace(LATIN_RUN, run => (/[A-Za-z]/.test(run) ? `<bdi class="nw">${run}</bdi>` : run)));
+const isolateLatin = s => (!/[\u0600-\u06FF]/.test(s) ? `<bdi>${s}</bdi>` : s.replace(/(<[^>]+>)|([^<]+)/g, (m, tag, text) =>
+  tag || text.replace(LATIN_RUN, run => (/[A-Za-z]/.test(run) ? `<bdi class="nw">${run}</bdi>` : run))));
 const html = s => ({ __html: lang === 'ar' ? isolateLatin(s) : s });
 const EMAIL = 'anwarluck@outlook.com';
 const PHONE = '+974 7134 2346';
@@ -89,8 +89,8 @@ export default function App() {
           <p className="hero-role" id="h-role" dangerouslySetInnerHTML={html(t.role)} />
           <div className="hero-pills" id="h-pills">
             <span className="hero-pill"><Pin /> {t.city}</span>
-            <span className="hero-pill"><Mail /> {EMAIL}</span>
-            <span className="hero-pill"><Phone /> <span dir="ltr">{PHONE}</span></span>
+            <span className="hero-pill" dir="ltr"><Mail /> {EMAIL}</span>
+            <span className="hero-pill" dir="ltr"><Phone /> {PHONE}</span>
           </div>
           <div className="hero-cert-badge" id="h-badge"><Award /> <span dangerouslySetInnerHTML={html(t.badge)} /></div>
         </div>
@@ -257,8 +257,8 @@ export default function App() {
           <h2 className="contact-title">{t.contactTitle}</h2>
           <p className="contact-subtitle" dangerouslySetInnerHTML={html(t.contactSubtitle)} />
           <div className="contact-info">
-            <div className="contact-item"><Mail /> <a href={`mailto:${EMAIL}`}>{EMAIL}</a></div>
-            <div className="contact-item"><Phone /> <span dir="ltr">{PHONE}</span></div>
+            <div className="contact-item" dir="ltr"><Mail /> <a href={`mailto:${EMAIL}`}>{EMAIL}</a></div>
+            <div className="contact-item" dir="ltr"><Phone /> {PHONE}</div>
             <div className="contact-item"><Pin /> {t.city}</div>
           </div>
           <div className="social-links">

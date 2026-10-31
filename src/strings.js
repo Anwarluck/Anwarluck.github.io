@@ -221,7 +221,7 @@ export const STRINGS = {
     "filterAll": "Alle",
     "projects": [
       {
-        "title": "Trader Support Portal — MOCI Katar",
+        "title": "Trader Support Portal — MOCI Qatar",
         "period": "März 2026 – heute",
         "body": "Aufbau des Trader Support Portals von Grund auf für das Ministerium für Handel und Industrie (MOCI) in Katar, das Händler während einer regionalen Lieferkettenstörung mit Transportkostenzuschüssen unterstützt. Anpassung von Dynamics 365 CRM an die Förderprozesse, Umsetzung von CRM-Automatisierungen und Geschäftslogik, Entwicklung von Backend-APIs zur Anbindung des Händlerportals sowie enge Zusammenarbeit mit dem Frontend-Entwickler bis zum Go-live."
       },
@@ -231,17 +231,17 @@ export const STRINGS = {
         "body": "Mitarbeit an den Modulen Incentives und Investment Relations (IR) eines umfangreichen CRM-Projekts: automatisierte Workflows und Business Process Flows, angepasste Power Pages, individuelle Dashboards und Web-APIs für die Dynamics-CRM-Integration sowie Datenaustausch mit Behörden. Optimierung der CRM-Funktionen und reibungslose Interoperabilität mit externen Systemen."
       },
       {
-        "title": "MCIT Katar – Collaboration Hub",
+        "title": "MCIT Qatar – Collaboration Hub",
         "period": null,
         "body": "Mitentwicklung einer zentralen digitalen Plattform für das Ministerium für Kommunikation und Informationstechnologie (MCIT) zur Abwicklung von Rundschreiben, Cloud-Serviceanfragen und dem behördenübergreifenden Onboarding von Stakeholdern. Umgesetzt mit Dynamics 365 CRM, Power Pages und Power Automate, inklusive rollenbasierter Zugriffe, sicherer externer Portale und automatisierter Workflows anstelle manueller Prozesse. Ergebnis: mehr Effizienz, Transparenz und sichere Kommunikation zwischen dem MCIT und externen Stellen."
       },
       {
-        "title": "The Flow – Finanzen und Zeiterfassung",
+        "title": "The Flow – Finance &amp; Time Tracker",
         "period": null,
         "body": "Leitung von Konzeption und Entwicklung von The Flow, einer CRM- und Power-Platform-Lösung für die internen Abläufe von Applab. Finanzmodul: Model-Driven Apps auf Dynamics 365 für den gesamten Lebenszyklus – von Lead und Opportunity bis zur Überführung in Projekte und zum Finanzcontrolling. Zeiterfassungsmodul: individuell entwickelte Power-Pages-Website für die tägliche Buchung von Aufgaben und Stunden, Kosten- und Liefercontrolling, Ressourcenplanung und KPI-Abgleich."
       },
       {
-        "title": "Watad – Elektronisches Beratungssystem",
+        "title": "Watad – Electronic Consultation System",
         "period": null,
         "body": "Mitentwicklung von Watad, einer digitalen Plattform des katarischen Ministeriums für soziale Entwicklung und Familie, die Einzelpersonen und Familien mit Beratern für Beratung, Therapie und Unterstützung verbindet – per Video, Telefon oder persönlich. Anpassung von Dynamics CRM für Terminplanung, Feedback und Fortschrittsverfolgung; Integration mit einem Angular-Frontend und Microsoft Teams für Audio- und Videotermine; APIs für den Datenaustausch mit Behörden und Reporting-Tools zur Leistungsüberwachung."
       },
@@ -251,12 +251,12 @@ export const STRINGS = {
         "body": "Anpassung und Erweiterung von Dynamics CRM über mehrere Geschäftsbereiche mit Workflows, Plugins, Webressourcen, Custom Actions und Web-APIs. Erstellung von SSRS-Berichten und Anbindung von Drittanbieterdiensten für SMS-Versand und In-App-Push-Benachrichtigungen über OneSignal."
       },
       {
-        "title": "Ciclic – WhatsApp-CRM-Integration",
+        "title": "Ciclic – WhatsApp CRM Integration",
         "period": null,
         "body": "Integration von Dynamics CRM mit WhatsApp, sodass Nutzer Nachrichten direkt im CRM senden und empfangen können. Webhooks erfassen die Antworten; ein eigener Power-Automate-Connector bindet die WhatsApp Cloud API wiederverwendbar an."
       },
       {
-        "title": "BS-Migration – von On-Premises in die Cloud",
+        "title": "BS Migration – On-Premises to Cloud",
         "period": null,
         "body": "Migration von FBS, einem Unternehmen aus dem Bankensektor, von On-Premises in die Cloud: Überführung sämtlicher Daten, Anpassungen und Geschäftsprozesse in die Online-Version des CRM. Ausbau des Reportings mit Power BI und Umstellung bestehender SSRS-Abfragen von SQL auf FetchXML."
       },
@@ -266,7 +266,7 @@ export const STRINGS = {
         "body": "Lösung für die Instant Products Group zum Versand von Auftragsbenachrichtigungen über ein On-Premises-Datengateway, Azure Logic Apps und Power Automate. Die Lösung verbindet lokale und Cloud-Infrastruktur für Benachrichtigungen in Echtzeit."
       },
       {
-        "title": "Tech Fabric – CRM und Zeiterfassung",
+        "title": "Tech Fabric – CRM &amp; Time Tracker",
         "period": null,
         "body": "Anpassungen am Modul Project Operations (Field Service) mit Workflows, Plugins und Azure Functions sowie SSRS-Berichten. Integration der Zeiterfassung mit 7Pace Time Tracker über Power Automate, wodurch Projektverantwortung und Zeitmanagement deutlich verbessert wurden."
       }
@@ -361,7 +361,7 @@ export const STRINGS = {
     "filterAll": "Tous",
     "projects": [
       {
-        "title": "Portail d’aide aux commerçants — MOCI Qatar",
+        "title": "Trader Support Portal — MOCI Qatar",
         "period": "mars 2026 – aujourd’hui",
         "body": "Conception de A à Z d’un portail d’aide aux commerçants pour le ministère du Commerce et de l’Industrie (MOCI) du Qatar, permettant de subventionner leurs frais de transport lors d’une perturbation régionale des chaînes d’approvisionnement. Personnalisation de Dynamics 365 CRM pour les processus de subvention, développement des automatisations et de la logique métier, conception des API backend reliant Dynamics 365 au portail, et collaboration étroite avec le développeur frontend jusqu’à la mise en production."
       },
@@ -376,12 +376,12 @@ export const STRINGS = {
         "body": "Contribution à une plateforme numérique centralisée pour le ministère des Communications et des Technologies de l’information (MCIT), destinée à gérer les circulaires, les demandes de services cloud et l’intégration des parties prenantes au sein des entités publiques. Réalisée avec Dynamics 365 CRM, Power Pages et Power Automate : accès basé sur les rôles, portails externes sécurisés et workflows automatisés remplaçant les processus manuels. Résultat : plus d’efficacité, de transparence et une communication sécurisée entre le MCIT et ses partenaires."
       },
       {
-        "title": "The Flow – Finance et suivi du temps",
+        "title": "The Flow – Finance &amp; Time Tracker",
         "period": null,
         "body": "Direction de la conception et du développement de The Flow, une solution CRM et Power Platform destinée aux opérations internes d’Applab. Module Finance : applications model-driven Dynamics 365 couvrant tout le cycle, des prospects et opportunités jusqu’à la conversion en projet et au suivi financier. Module de saisie des temps : site Power Pages entièrement sur mesure pour la saisie quotidienne des tâches et des heures, le suivi des coûts et des livrables, la planification des ressources et l’alignement des KPI."
       },
       {
-        "title": "Watad – Système de consultation électronique",
+        "title": "Watad – Electronic Consultation System",
         "period": null,
         "body": "Contribution à Watad, plateforme numérique du ministère qatarien du Développement social et de la Famille, qui met en relation particuliers et familles avec des conseillers pour un accompagnement, une thérapie ou un soutien (en visio, par téléphone ou en présentiel). Personnalisation de Dynamics CRM pour la planification, les retours et le suivi des progrès ; intégration avec un frontend Angular et Microsoft Teams pour les rendez-vous audio et vidéo ; API d’échange de données avec les organismes publics et outils de reporting."
       },
@@ -391,12 +391,12 @@ export const STRINGS = {
         "body": "Personnalisation et extension de Dynamics CRM sur plusieurs unités métier avec workflows, plugins, ressources web, actions personnalisées et Web API. Création de rapports SSRS et intégration de services tiers pour l’envoi de SMS et les notifications push in-app via OneSignal."
       },
       {
-        "title": "Ciclic – Intégration WhatsApp au CRM",
+        "title": "Ciclic – WhatsApp CRM Integration",
         "period": null,
         "body": "Intégration de Dynamics CRM avec WhatsApp pour envoyer et recevoir des messages directement dans le CRM. Mise en place de webhooks pour capter les réponses et d’un connecteur Power Automate sur mesure pour l’API WhatsApp Cloud, rendant l’intégration simple et réutilisable."
       },
       {
-        "title": "Migration BS – de l’on-premise vers le cloud",
+        "title": "BS Migration – On-Premises to Cloud",
         "period": null,
         "body": "Migration de FBS, un acteur du secteur bancaire, de son infrastructure sur site vers le cloud : données, personnalisations et processus métier transférés vers la version en ligne du CRM. Reporting enrichi avec Power BI et conversion des requêtes SSRS de SQL vers FetchXML."
       },
@@ -406,7 +406,7 @@ export const STRINGS = {
         "body": "Solution pour Instant Products Group permettant l’envoi de notifications de tâches via une passerelle de données locale, Azure Logic Apps et Power Automate, reliant l’infrastructure sur site et le cloud pour des notifications en temps réel."
       },
       {
-        "title": "Tech Fabric – CRM et suivi du temps",
+        "title": "Tech Fabric – CRM &amp; Time Tracker",
         "period": null,
         "body": "Personnalisation du module Project Operations (Field Service) avec workflows, plugins et Azure Functions, ainsi que des rapports SSRS. Intégration de la saisie des temps à 7Pace Time Tracker via Power Automate, améliorant nettement le suivi et la responsabilisation des projets."
       }
@@ -421,7 +421,7 @@ export const STRINGS = {
     "contactSubtitle": "Ouvert aux postes de consultant senior, aux missions d’architecture de solutions <br>et aux projets Dynamics 365 / Power Platform — prêt à m’installer au Royaume-Uni, en Allemagne, en Nouvelle-Zélande ou en Australie."
   },
   "ar": {
-    "title": "أنوار الحق — مهندس حلول Dynamics 365 CRM و Power Platform",
+    "title": "أنوار الحق — مهندس حلول Dynamics 365 CRM، Power Platform",
     "nav": [
       "نبذة",
       "الخبرات",
@@ -433,7 +433,7 @@ export const STRINGS = {
     "hire": "تواصل معي",
     "mcid": "MICROSOFT ID: 991520706 // الدوحة، قطر",
     "avail": "متاح لفرص عمل جديدة",
-    "role": "استشاري أول <span>Dynamics 365 CRM</span> و <span>Power Platform</span>",
+    "role": "استشاري أول <span>Dynamics 365 CRM</span>، <span>Power Platform</span>",
     "city": "الدوحة، قطر",
     "badge": "16 شهادة من Microsoft، منها PL-600 و AB-100 في هندسة الحلول",
     "scroll": "مرّر للأسفل",
@@ -463,7 +463,7 @@ export const STRINGS = {
     "summary": "<strong>مهندس حلول</strong> Dynamics 365 CE و Power Platform بخبرة <strong>تزيد على 6 سنوات</strong> في تنفيذ منصات CRM للجهات الحكومية والشركات في قطر وباكستان. نفّذتُ <strong>أكثر من 20 مشروعاً</strong>، وقدتُ <strong>فريقاً من 14 عضواً</strong>، وحصلتُ على <strong>16 شهادة من Microsoft</strong>، منها PL-600 و AB-100.",
     "exp": [
       {
-        "role": "استشاري أول Dynamics CRM و Power Platform",
+        "role": "استشاري أول Dynamics CRM، Power Platform",
         "period": "أكتوبر 2025 — حتى الآن",
         "company": "حصاد الغذائية — الشركة الوطنية للأمن الغذائي في دولة قطر · الدوحة، قطر",
         "bullets": [
@@ -501,27 +501,27 @@ export const STRINGS = {
     "filterAll": "الكل",
     "projects": [
       {
-        "title": "بوابة دعم التجار — وزارة التجارة والصناعة",
+        "title": "Trader Support Portal — MOCI Qatar",
         "period": "مارس 2026 – حتى الآن",
         "body": "بناء بوابة دعم التجار من الصفر لصالح وزارة التجارة والصناعة في دولة قطر، لتقديم دعم تكاليف النقل للتجار خلال اضطراب إقليمي في سلاسل الإمداد. شمل العمل تخصيص Dynamics 365 CRM لإجراءات الدعم، وتطوير الأتمتة ومنطق الأعمال، وتصميم واجهات API خلفية تربط Dynamics 365 ببوابة التجار، والتنسيق مع مطور الواجهة الأمامية حتى التسليم النهائي."
       },
       {
-        "title": "استثمر في قطر (IPAQ)",
+        "title": "Invest Qatar (IPAQ)",
         "period": "يوليو 2023 – سبتمبر 2025",
         "body": "العمل على وحدتي الحوافز وعلاقات المستثمرين ضمن مشروع CRM متكامل، شمل سير عمل مؤتمتاً و Business Process Flows، وتخصيص Power Pages، ولوحات معلومات وواجهات Web API مخصصة للتكامل مع Dynamics CRM، وتبادل البيانات مع الجهات الحكومية، إلى جانب تحسين وظائف CRM وضمان التوافق مع الأنظمة الخارجية."
       },
       {
-        "title": "منصة قطر للتعاون – وزارة الاتصالات وتكنولوجيا المعلومات",
+        "title": "MCIT Qatar – Collaboration Hub",
         "period": null,
         "body": "المساهمة في بناء منصة رقمية مركزية لوزارة الاتصالات وتكنولوجيا المعلومات لإدارة التعاميم، وطلبات الخدمات السحابية، وتسجيل الجهات المعنية. نُفّذت المنصة باستخدام Dynamics 365 CRM، و Power Pages، و Power Automate، مع صلاحيات وصول قائمة على الأدوار، وبوابات خارجية آمنة، وسير عمل مؤتمت يحل محل الإجراءات اليدوية. النتيجة: كفاءة وشفافية أعلى، وتواصل آمن بين الوزارة والجهات الخارجية."
       },
       {
-        "title": "The Flow – المالية وتسجيل الوقت",
+        "title": "The Flow – Finance &amp; Time Tracker",
         "period": null,
         "body": "قيادة تصميم وتطوير The Flow، وهو حل مبني على CRM و Power Platform لتنظيم العمليات الداخلية في Applab. وحدة المالية: تطبيقات Model-Driven على Dynamics 365 تغطي الدورة الكاملة، من العملاء المحتملين والفرص البيعية إلى تحويلها إلى مشاريع ومتابعتها مالياً. وحدة تسجيل الوقت: موقع Power Pages مخصص بالكامل لتسجيل المهام وساعات العمل اليومية، ومتابعة التكاليف والتسليم، وتخطيط الموارد، ومواءمة مؤشرات الأداء."
       },
       {
-        "title": "وتد – نظام الاستشارات الإلكترونية",
+        "title": "Watad – Electronic Consultation System",
         "period": null,
         "body": "المساهمة في تطوير منصة وتد التابعة لوزارة التنمية الاجتماعية والأسرة في دولة قطر، التي تربط الأفراد والأسر بالمستشارين للحصول على الإرشاد والعلاج والدعم (عبر الفيديو، أو الهاتف، أو حضورياً). شمل العمل تخصيص Dynamics CRM للجدولة، والملاحظات، ومتابعة التقدم، ودمجه مع واجهة Angular و Microsoft Teams للمواعيد الصوتية والمرئية، وبناء واجهات API لتبادل البيانات مع الجهات الحكومية، وأدوات تقارير لمتابعة الأداء."
       },
@@ -531,12 +531,12 @@ export const STRINGS = {
         "body": "تخصيص Dynamics CRM وتوسيع وظائفه ليشمل عدة وحدات أعمال باستخدام سير العمل، و Plugins، وموارد الويب، و Custom Actions، و Web API. إعداد تقارير SSRS ودمج خدمات خارجية لإرسال الرسائل النصية والإشعارات الفورية داخل التطبيق عبر OneSignal."
       },
       {
-        "title": "Ciclic – تكامل WhatsApp مع CRM",
+        "title": "Ciclic – WhatsApp CRM Integration",
         "period": null,
         "body": "دمج Dynamics CRM مع WhatsApp لتمكين المستخدمين من إرسال الرسائل واستقبالها من داخل CRM. إنشاء Webhooks لالتقاط الردود، وتطوير موصل Power Automate مخصص لواجهات WhatsApp Cloud API، ما جعل التكامل سلساً وقابلاً لإعادة الاستخدام."
       },
       {
-        "title": "ترحيل BS – من الخوادم المحلية إلى السحابة",
+        "title": "BS Migration – On-Premises to Cloud",
         "period": null,
         "body": "ترحيل أنظمة FBS، وهي مؤسسة في القطاع المصرفي، من الخوادم المحلية إلى السحابة، شاملاً جميع البيانات والتخصيصات وإجراءات العمل إلى النسخة السحابية من CRM، إلى جانب تطوير التقارير عبر Power BI، وتحويل استعلامات تقارير SSRS من SQL إلى FetchXML."
       },
@@ -546,7 +546,7 @@ export const STRINGS = {
         "body": "تطوير حل لمجموعة Instant Products لإرسال إشعارات المهام باستخدام بوابة بيانات محلية، و Azure Logic Apps، و Power Automate؛ إذ يربط الحل البنية التحتية المحلية بالسحابة لإرسال الإشعارات لحظياً."
       },
       {
-        "title": "Tech Fabric – CRM وتسجيل الوقت",
+        "title": "Tech Fabric – CRM &amp; Time Tracker",
         "period": null,
         "body": "تخصيص وحدة Project Operations (Field Service) باستخدام سير العمل، و Plugins، و Azure Functions، وإعداد تقارير SSRS، وربط تسجيل ساعات العمل بأداة 7Pace Time Tracker عبر Power Automate، ما حسّن متابعة المشاريع وإدارة الوقت بشكل ملحوظ."
       }
