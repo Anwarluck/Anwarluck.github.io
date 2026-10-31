@@ -191,7 +191,7 @@ export const STRINGS = {
           "Umsetzung des <strong>Trader Support Portals</strong> für Förderanträge während einer regionalen Lieferkettenstörung.",
           "Entwicklung der Module <strong>Gerätebuchung</strong>, <strong>Aquakultur</strong>, <strong>Fallmanagement</strong> und <strong>Kundenfeedback</strong>.",
           "Integration einer <strong>KI-gestützten Erkennung von Pflanzenkrankheiten</strong> (DeepLeaf) in das Landwirteportal.",
-          "Neukonzeption der <strong>Import-Auktion</strong>: Auslagerung der Logik aus dem CRM in eigenständige APIs und ein separates Frontend mit Anmeldung über CRM-Sicherheitsrollen."
+          "Neukonzeption der <strong>Import Auction</strong>: Auslagerung der Logik aus dem CRM in eigenständige APIs und ein separates Frontend mit Anmeldung über CRM-Sicherheitsrollen."
         ]
       },
       {
@@ -328,10 +328,10 @@ export const STRINGS = {
         "company": "Hassad Food — société nationale pour la sécurité alimentaire du Qatar · Doha, Qatar",
         "bullets": [
           "Développement continu de <strong>Raqmana</strong>, la plateforme agricole nationale du Qatar, reposant sur Dynamics 365 et Power Platform.",
-          "Mise en place d’un <strong>portail d’aide aux commerçants</strong> pour le traitement des demandes de subvention lors d’une perturbation régionale des chaînes d’approvisionnement.",
+          "Mise en place du <strong>Trader Support Portal</strong> pour le traitement des demandes de subvention lors d’une perturbation régionale des chaînes d’approvisionnement.",
           "Développement des modules de <strong>réservation d’équipements</strong>, d’<strong>aquaculture</strong>, de <strong>gestion des dossiers</strong> et de <strong>recueil des avis</strong>.",
           "Intégration de la <strong>détection des maladies des cultures par IA</strong> (DeepLeaf) dans le portail des agriculteurs.",
-          "Refonte du système d’<strong>enchères à l’importation</strong> : logique extraite du CRM vers des API autonomes et un frontend dédié, avec authentification via les rôles de sécurité du CRM."
+          "Refonte du système <strong>Import Auction</strong> : logique extraite du CRM vers des API autonomes et un frontend dédié, avec authentification via les rôles de sécurité du CRM."
         ]
       },
       {
@@ -363,7 +363,7 @@ export const STRINGS = {
       {
         "title": "Trader Support Portal — MOCI Qatar",
         "period": "mars 2026 – aujourd’hui",
-        "body": "Conception de A à Z d’un portail d’aide aux commerçants pour le ministère du Commerce et de l’Industrie (MOCI) du Qatar, permettant de subventionner leurs frais de transport lors d’une perturbation régionale des chaînes d’approvisionnement. Personnalisation de Dynamics 365 CRM pour les processus de subvention, développement des automatisations et de la logique métier, conception des API backend reliant Dynamics 365 au portail, et collaboration étroite avec le développeur frontend jusqu’à la mise en production."
+        "body": "Conception de A à Z du Trader Support Portal pour le ministère du Commerce et de l’Industrie (MOCI) du Qatar, permettant de subventionner leurs frais de transport lors d’une perturbation régionale des chaînes d’approvisionnement. Personnalisation de Dynamics 365 CRM pour les processus de subvention, développement des automatisations et de la logique métier, conception des API backend reliant Dynamics 365 au portail, et collaboration étroite avec le développeur frontend jusqu’à la mise en production."
       },
       {
         "title": "Invest Qatar (IPAQ)",
@@ -467,11 +467,11 @@ export const STRINGS = {
         "period": "أكتوبر 2025 — حتى الآن",
         "company": "حصاد الغذائية — الشركة الوطنية للأمن الغذائي في دولة قطر · الدوحة، قطر",
         "bullets": [
-          "تطوير منصة <strong>رقمنة</strong>، المنصة الزراعية الوطنية في دولة قطر، المبنية على Dynamics 365 و Power Platform.",
-          "تنفيذ <strong>بوابة دعم التجار</strong> لاستقبال طلبات الدعم خلال اضطراب إقليمي في سلاسل الإمداد.",
+          "تطوير منصة <strong>Raqmana</strong>، المنصة الزراعية الوطنية في دولة قطر، المبنية على Dynamics 365 و Power Platform.",
+          "تنفيذ بوابة <strong>Trader Support Portal</strong> لاستقبال طلبات الدعم خلال اضطراب إقليمي في سلاسل الإمداد.",
           "تطوير وحدات <strong>حجز المعدات</strong>، و<strong>الاستزراع المائي</strong>، و<strong>إدارة الحالات</strong>، و<strong>ملاحظات المتعاملين</strong>.",
           "دمج خدمة <strong>الكشف عن أمراض المحاصيل بالذكاء الاصطناعي</strong> (DeepLeaf) في بوابة المزارعين.",
-          "إعادة هندسة نظام <strong>مزاد الاستيراد</strong> ليعمل عبر واجهات API مستقلة وواجهة أمامية منفصلة، مع تسجيل الدخول بصلاحيات CRM."
+          "إعادة هندسة نظام <strong>Import Auction</strong> ليعمل عبر واجهات API مستقلة وواجهة أمامية منفصلة، مع تسجيل الدخول بصلاحيات CRM."
         ]
       },
       {
@@ -480,8 +480,8 @@ export const STRINGS = {
         "company": "Applab · الدوحة، قطر",
         "bullets": [
           "قيادة <strong>فريق من 14</strong> مطوراً واستشارياً لتنفيذ حلول Dynamics 365 و Power Platform لجهات حكومية قطرية.",
-          "<strong>منصة قطر للتعاون (QCH) – وزارة الاتصالات وتكنولوجيا المعلومات:</strong> تصميم منصة لطلبات الخدمات الحكومية على Dynamics CRM، و Power Pages، و Azure App Service، و Azure AI Services، مع مسارات اعتماد متعددة المراحل ووحدة لإدارة التعاميم.",
-          "<strong>منصة وتد للاستشارات الإلكترونية – وزارة التنمية الاجتماعية والأسرة:</strong> منصة استشارات متعددة القنوات (حضورياً، وعبر Microsoft Teams، وهاتفياً) بواجهة أمامية Angular ونظام خلفي Dynamics CRM، تشمل التنسيق مع الأخصائيين الاجتماعيين وجدولة مواعيد المستشارين.",
+          "<strong>Qatar Collaboration Hub (QCH) – وزارة الاتصالات وتكنولوجيا المعلومات:</strong> تصميم منصة لطلبات الخدمات الحكومية على Dynamics CRM، و Power Pages، و Azure App Service، و Azure AI Services، مع مسارات اعتماد متعددة المراحل ووحدة لإدارة التعاميم.",
+          "<strong>Watad E-Consultation – وزارة التنمية الاجتماعية والأسرة:</strong> منصة استشارات متعددة القنوات (حضورياً، وعبر Microsoft Teams، وهاتفياً) بواجهة أمامية Angular ونظام خلفي Dynamics CRM، تشمل التنسيق مع الأخصائيين الاجتماعيين وجدولة مواعيد المستشارين.",
           "<strong>وكالة ترويج الاستثمار في قطر:</strong> تطوير وحدتي الحوافز وعلاقات المستثمرين بسير عمل مؤتمت، وتخصيصات Power Pages، وواجهات Web API، وتكامل لتبادل البيانات مع الجهات الحكومية.",
           "الالتزام بمواعيد التسليم أو إنجاز العمل قبلها، وتطبيق معايير أمن المعلومات وحماية البيانات في جميع بوابات Power Pages الحكومية."
         ]
@@ -523,7 +523,7 @@ export const STRINGS = {
       {
         "title": "Watad – Electronic Consultation System",
         "period": null,
-        "body": "المساهمة في تطوير منصة وتد التابعة لوزارة التنمية الاجتماعية والأسرة في دولة قطر، التي تربط الأفراد والأسر بالمستشارين للحصول على الإرشاد والعلاج والدعم (عبر الفيديو، أو الهاتف، أو حضورياً). شمل العمل تخصيص Dynamics CRM للجدولة، والملاحظات، ومتابعة التقدم، ودمجه مع واجهة Angular و Microsoft Teams للمواعيد الصوتية والمرئية، وبناء واجهات API لتبادل البيانات مع الجهات الحكومية، وأدوات تقارير لمتابعة الأداء."
+        "body": "المساهمة في تطوير منصة Watad التابعة لوزارة التنمية الاجتماعية والأسرة في دولة قطر، التي تربط الأفراد والأسر بالمستشارين للحصول على الإرشاد والعلاج والدعم (عبر الفيديو، أو الهاتف، أو حضورياً). شمل العمل تخصيص Dynamics CRM للجدولة، والملاحظات، ومتابعة التقدم، ودمجه مع واجهة Angular و Microsoft Teams للمواعيد الصوتية والمرئية، وبناء واجهات API لتبادل البيانات مع الجهات الحكومية، وأدوات تقارير لمتابعة الأداء."
       },
       {
         "title": "Auto Mercado CRM",
